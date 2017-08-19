@@ -1,4 +1,5 @@
 <?php
+require 'connection.php';
 
 $result = mysqli_query($con,"SELECT description FROM polygon");
 $row = mysqli_fetch_array($result);
