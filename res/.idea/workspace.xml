@@ -37,11 +37,11 @@
       <file leaf-file-name="getbuilding.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/getbuilding.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="11" column="2" lean-forward="true" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+            <state relative-caret-position="441">
+              <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
               <folding>
-                <marker date="1503212747771" expanded="true" signature="87:125" ph="SELECT * FRO... building" />
-                <marker date="1503212747771" expanded="true" signature="87:132" ph="SELECT * FRO... building" />
+                <marker date="1503216074941" expanded="true" signature="84:122" ph="SELECT * FRO... building" />
+                <marker date="1503216074941" expanded="true" signature="84:129" ph="SELECT * FRO... building" />
               </folding>
             </state>
           </provider>
@@ -126,12 +126,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1503136755004</updated>
-      <workItem from="1503136756308" duration="8729000" />
+      <workItem from="1503136756308" duration="10739000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8729000" />
+    <option name="totallyTimeSpent" value="10739000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -188,11 +188,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/getbuilding.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="2" lean-forward="true" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+        <state relative-caret-position="441">
+          <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
           <folding>
-            <marker date="1503212747771" expanded="true" signature="87:125" ph="SELECT * FRO... building" />
-            <marker date="1503212747771" expanded="true" signature="87:132" ph="SELECT * FRO... building" />
+            <marker date="1503216074941" expanded="true" signature="84:122" ph="SELECT * FRO... building" />
+            <marker date="1503216074941" expanded="true" signature="84:129" ph="SELECT * FRO... building" />
           </folding>
         </state>
       </provider>
