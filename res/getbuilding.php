@@ -3,7 +3,7 @@ require 'connection.php';
 
 $test = $_POST['text'];
 
-$res = mysqli_query($con,"SELECT * FROM building WHERE name LIKE $test%");
+$res = mysqli_query($con,"SELECT * FROM building WHERE name LIKE l%");
 
 $result = array();
 
