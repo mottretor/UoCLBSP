@@ -1,7 +1,9 @@
 <?php
 require 'connection.php';
 
-$result = mysqli_query($con,"SELECT * FROM building");
+$test = $_POST['text'];
+
+$result = mysqli_query($con,"SELECT * FROM building WHERE name LIKE $test%");
 $row = mysqli_fetch_all($result);
 
 
