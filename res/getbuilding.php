@@ -2,8 +2,8 @@
 require 'connection.php';
 
 $test = $_POST['text'];
-
-$res = mysqli_query($con,"SELECT * FROM building WHERE name LIKE '$test%'");
+$test = $test.'%';
+$res = mysqli_query($con,"SELECT * FROM building WHERE name LIKE '$test'");
 
 $result = array();
 
