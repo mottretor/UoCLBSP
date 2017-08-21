@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html>
+<h1 class="heading">University of Colombo School of Computing</h1>
+<style type="text/css">
+  .heading { 
+    color : #fff;
+    font-family: Arial;
+    margin-left: 10em;
+    margin-top: 1em;
+    
+
+   }
+</style>
   <head>
     <title>Sample directions</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -8,8 +19,10 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 80%;
+        height: 85%;
       }
+      
+      
       /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
@@ -49,12 +62,17 @@
 
     </style>
   </head>
+  <style >
+    body{
+      background-color: black;
+    }
+  </style>>
   <body>
     <input id="origin-input" class="controls" type="text"
-        placeholder="Enter an origin location">
+        placeholder="Origin location...">
 
     <input id="destination-input" class="controls" type="text"
-        placeholder="Enter a destination location">
+        placeholder="Destination location...">
 
     
 
@@ -107,7 +125,7 @@
 
       // Sets a listener on a radio button to change the filter type on Places
       // Autocomplete.
-      AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
+      /*AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
         var radioButton = document.getElementById(id);
         var me = this;
         radioButton.addEventListener('click', function() {
@@ -115,6 +133,7 @@
           me.route();
         });
       };
+      */
 
       AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
         var me = this;
@@ -157,5 +176,6 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZXHp9g0R5pEPgs2AlSUQBBBv0xe8vIhY&libraries=places&callback=initMap"
         async defer></script>
+        
   </body>
 </html>
