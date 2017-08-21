@@ -2,9 +2,9 @@
 require 'connection.php';
 
 $result = mysqli_query($con,"SELECT * FROM polygon");
-$row = mysqli_fetch_assoc($result);
-$data = $row['description'];
+$row = mysqli_fetch_all($result);
 
-echo $data;
+
+echo json_encode($row);
 
 ?>

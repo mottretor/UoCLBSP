@@ -44,11 +44,15 @@
     </style>
 </head>
 <body>
+
+<div>
+    <h1>UoC Location Based Services Platform</h1>
+</div>
 <!--<input id="origin-input" class="controls" type="text"-->
 <!--       placeholder="Enter an origin location">-->
 
 <input id="destination-input" class="controls" type="text"
-       placeholder="Search Location">
+       placeholder="Search Location" onkeydown="search(this)">
 
 <div id="map"></div>
 
@@ -56,17 +60,19 @@
     // This example requires the Places library. Include the libraries=places
     // parameter when you first load the API. For example:
     // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
     var marker;
-
     function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 16,
             center: {lat: 6.9022, lng: 79.8607}
         });
         new AutocompleteDirectionsHandler(map);
+<<<<<<< HEAD:Web06/Map/Search.php
 
         /*marker = new google.maps.Marker({
+=======
+        marker = new google.maps.Marker({
+>>>>>>> origin/master:Web06/Map/SearchPlace.php
             map: map,
             draggable: true,
             animation: google.maps.Animation.DROP,
@@ -78,7 +84,6 @@
         });
         marker.addListener('click', toggleBounce);
     }
-
     function toggleBounce() {
         if (marker.getAnimation() !== null) {
             marker.setAnimation(null);
@@ -107,7 +112,6 @@
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
     }
-
     AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
         var me = this;
         autocomplete.bindTo('bounds', this.map);
