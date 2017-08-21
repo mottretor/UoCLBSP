@@ -1,0 +1,48 @@
+#signin {
+	float : center;
+	border : 2px;
+	
+    outline-style: solid;
+    padding:20px;
+    background: #f9f7f7 ;
+    width: 350px;
+    font-size: 25px;
+    border-radius: 20px;
+    margin-left:450px;
+    margin-bottom: 250px;
+    margin-top: 250px;
+    
+    
+
+
+
+}
+
+#right {
+	float: right;
+	width: 500px;
+}
+
+#sign {
+	color: blue;
+	border-radius: 10px;
+	font-size: 20px;
+}
+
+#passwordp {
+	font-size: 20px;
+	border-radius: 10px;
+	border-color: #94a0b5;
+}
+
+#name {
+	font-size: 20px;
+	border-radius: 10px;
+	border-color: #94a0b5;
+}
+
+#email {
+	font-size: 20px;
+	border-radius: 10px;
+	border-color: #94a0b5;
+}
