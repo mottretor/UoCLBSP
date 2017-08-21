@@ -8,13 +8,13 @@
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
         #map {
-            height: 100%;
+            height: 80%;
         }
         /* Optional: Makes the sample page fill the window. */
         html, body {
             height: 100%;
-            margin: 0;
-            padding: 0;
+            margin: 10;
+            padding: 10;
         }
         .controls {
             margin-top: 10px;
@@ -67,11 +67,20 @@
             center: {lat: 6.9022, lng: 79.8607}
         });
         new AutocompleteDirectionsHandler(map);
+<<<<<<< HEAD:Web06/Map/Search.php
+
+        /*marker = new google.maps.Marker({
+=======
         marker = new google.maps.Marker({
+>>>>>>> origin/master:Web06/Map/SearchPlace.php
             map: map,
             draggable: true,
             animation: google.maps.Animation.DROP,
             position: {lat: $latitude, lng: $longitude}
+        });*/
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(ORIG.getPosition().lat(), ORIG.getPosition().lng()),
+            map : map
         });
         marker.addListener('click', toggleBounce);
     }
@@ -94,11 +103,11 @@
         this.directionsService = new google.maps.DirectionsService;
         this.directionsDisplay = new google.maps.DirectionsRenderer;
         this.directionsDisplay.setMap(map);
-        var originAutocomplete = new google.maps.places.Autocomplete(
+        var ORIG = new google.maps.places.Autocomplete(
             originInput, {placeIdOnly: true});
         var destinationAutocomplete = new google.maps.places.Autocomplete(
             destinationInput, {placeIdOnly: true});
-        this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+        this.setupPlaceChangedListener(ORIG, 'ORIG');
         this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);

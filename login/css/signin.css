@@ -1,15 +1,21 @@
 #signin {
 	float : center;
 	border : 2px;
-	border-style: solid;
-    border-color: #5a5d63;
+	
+    outline-style: solid;
     padding:20px;
     background: #f9f7f7 ;
     width: 350px;
     font-size: 25px;
     border-radius: 20px;
-    margin-left:150px;
-    margin-bottom: 150px;
+    margin-left:450px;
+    margin-bottom: 250px;
+    margin-top: 250px;
+    
+    
+
+
+
 }
 
 #right {
