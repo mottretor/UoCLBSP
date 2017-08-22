@@ -6,5 +6,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="HotelMgtSystem" />
     <orderEntry type="module" module-name="MapDb" />
+    <orderEntry type="module" module-name="HotelMgtSystem" />
+    <orderEntry type="module" module-name="AWebPage" />
   </component>
 </module>

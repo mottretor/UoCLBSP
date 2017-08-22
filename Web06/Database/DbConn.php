@@ -1,6 +1,6 @@
 <?php
 
-$server = 'uoclspinstance.cabhxxryzggf.us-east-1.rds.amazonaws.com:3306';
+$server = 'uoclbspdbinstance.c5cec24wzera.us-east-1.rds.amazonaws.com:3306';
 $username = 'uocroot';
 $password = 'uocrootpass';
 $db = 'uoclbsp_db';

@@ -52,7 +52,7 @@
 <!--       placeholder="Enter an origin location">-->
 
 <input id="destination-input" class="controls" type="text"
-       placeholder="Search Location" onkeydown="search(this)">
+       placeholder="Search Location" onkeydown="myFunction(event)">
 
 <div id="map"></div>
 
@@ -129,6 +129,7 @@
             me.route();
         });
     };
+
     AutocompleteDirectionsHandler.prototype.route = function() {
         if (!this.originPlaceId || !this.destinationPlaceId) {
             return;
@@ -146,6 +147,19 @@
             }
         });
     };
+
+    function myFunction(enter) {
+        var x = enter.keyCode;
+        if (x == 13) {
+            alert ("You selected a place!");
+        }
+    }
+
+
+    destinationAutocomplete.onclick = function() {
+        alert('Click!');
+    };
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZXHp9g0R5pEPgs2AlSUQBBBv0xe8vIhY&libraries=places&callback=initMap"
         async defer></script>
