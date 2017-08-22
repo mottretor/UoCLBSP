@@ -9,7 +9,7 @@ $con = mysqli_connect($server, $username, $password, $db);
 if(!$con){
     die("Connection Not Established".mysqli_connect_error());
 }
-echo 'Successful!'
+
 ?>
 
 

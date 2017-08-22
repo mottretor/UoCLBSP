@@ -1,7 +1,7 @@
 <?php
 require '../Map/AddBuilding.php';
 
-if(isset($_POST['addBuilding'])) {
+if(isset($_POST['AddBuilding'])) {
     $buildingName = $_POST['BuildingName'];
     $description = $_POST['Description'];
     $latitudes = $_POST['Latitudes'];

@@ -1,4 +1,5 @@
 <?php
+require '../Map/EditBuilding.php';
 
 if(isset($_POST['UpdateBuilding'])) {
     $buildingName = $_POST['BuildingName'];

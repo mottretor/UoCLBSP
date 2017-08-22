@@ -11,7 +11,7 @@
     <div style="width: 25%; float: left">
         <div>
             </br>
-            <form action="" method="post">
+            <form action="../Database/AddBuildingDb.php" method="post">
                 <table>
                     <tr>
                         <td>
@@ -51,7 +51,7 @@
 
                 </table>
 
-                <input type="submit" name="addBuilding" value="Add Building">
+                <input type="submit" name="AddBuilding" value="Add Building">
                 <input type="reset" name="reset" value="Reset">
 
             </form>

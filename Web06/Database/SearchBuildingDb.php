@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['searchBuilding'])) {
+if(isset($_POST['SearchBuilding'])) {
     $buildingName = $_POST['buildingName'];
 
     require 'DbConn.php';

@@ -16,13 +16,37 @@
                     <tr>
                         <td> Name : </td>
                         <td>
-                            <input type="number" name="EventId">
+                            <input type="text" name="BuildingName" value="$row3['BuildingName']">
                         </td>
                     </tr>
+
+                    <tr>
+                        <td> Description : </td>
+                        <td>
+                            <textarea rows="5" cols="30" name="Description">$row3['Description']</textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td> Latitudes : </td>
+                        <td>
+                            <input type="text" name="Latitudes" value="$row3['Latitudes']">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td> Longitudes : </td>
+                        <td>
+                            <input type="text" name="Longitudes" value="$row3['Longitudes']">
+                        </td>
+                    </tr>
+
                 </table>
 
                 <input type="submit" name="UpdateBuilding" value="Update Building">
                 <input type="submit" name="DeleteBuilding" value="Delete Building">
+                <input type="reset" value="Reset">
+
             </form>
 
         </div>

@@ -1,37 +1,37 @@
 <?php
-    if(isset($_POST['UpdateBuilding'])) {
-        $buildingName = $_POST['BuildingName'];
-        $description = $_POST['Description'];
-        $latitudes = $_POST['Latitudes'];
-        $longitudes = $_POST['Longitudes'];
+require '../Map/EditBuilding.php';
 
-        require 'DbConn.php';
+if(isset($_POST['UpdateBuilding'])) {
+    $buildingName = $_POST['BuildingName'];
+    $description = $_POST['Description'];
+    $latitudes = $_POST['Latitudes'];
+    $longitudes = $_POST['Longitudes'];
 
-        $query4 = "SELECT * FROM building WHERE name = '$buildingName'";
-        mysqli_query($con,$query4)
-        or die(mysqli_error($con));
+    require 'DbConn.php';
 
-        $query5 = "UPDATE `building` 
-                    SET `description` = '$description',
-                        `latitudes` = '$latitudes',
-                        `longitudes` = '$longitudes',      
-                WHERE `name` = '$buildingName'";
-        $result = mysqli_query($con,$query5)
-        or die(mysqli_error($con));
-    }
+    $query4 = "SELECT * FROM building WHERE name = '$buildingName'";
+    mysqli_query($con,$query4)
+    or die(mysqli_error($con));
 
-    if(isset($_POST['DeleteBuilding'])) {
-        $eventid = $_POST['BuildingName'];
+    $query5 = "UPDATE `building` 
+                SET `name` = '$buildingName',
+                    `description` = '$description',
+                    `latitudes` = '$latitudes',
+                    `longitudes` = '$longitudes',      
+            WHERE `name` = '$buildingName'";
+    $result = mysqli_query($con,$query5)
+    or die(mysqli_error($con));
 
-        require 'DbConn.php';
+}
 
-        $query6 = "DELETE FROM `building` WHERE name = '$buildingName'";
-        mysqli_query($con, $query6)
-        or die(mysqli_error($con));
-    }
+if(isset($_POST['DeleteBuilding'])) {
+    $eventid = $_POST['BuildingName'];
 
-?>
+    require 'DbConn.php';
 
-?>
+    $query6 = "DELETE FROM `building` WHERE name = '$buildingName'";
+    mysqli_query($con, $query6)
+    or die(mysqli_error($con));
+}
 
 ?>

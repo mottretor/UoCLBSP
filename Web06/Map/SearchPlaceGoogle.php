@@ -67,17 +67,13 @@
             center: {lat: 6.9022, lng: 79.8607}
         });
         new AutocompleteDirectionsHandler(map);
-<<<<<<< HEAD:Web06/Map/Search.php
 
-        /*marker = new google.maps.Marker({
-=======
         marker = new google.maps.Marker({
->>>>>>> origin/master:Web06/Map/SearchPlace.php
             map: map,
             draggable: true,
             animation: google.maps.Animation.DROP,
             position: {lat: $latitude, lng: $longitude}
-        });*/
+        });
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(ORIG.getPosition().lat(), ORIG.getPosition().lng()),
             map : map

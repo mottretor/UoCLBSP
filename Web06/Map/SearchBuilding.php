@@ -11,7 +11,7 @@
     <div style="width: 25%; float: left">
         <div>
             <p>Search the building you want to edit.</p>
-            <form action="../database/SearchBuildingDb.php" method="post">
+            <form action="../Database/EditBuildingDb.php" method="post">
                 <table>
                     <tr>
                         <td> Name : </td>
@@ -21,7 +21,7 @@
                     </tr>
                 </table>
 
-                <input type="submit" name="SearchEvent" value="Search">
+                <input type="submit" name="SearchBuilding" value="Search">
             </form>
 
         </div>
