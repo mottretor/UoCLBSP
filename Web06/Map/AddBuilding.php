@@ -52,7 +52,7 @@
                 </table>
 
                 <input type="submit" name="addBuilding" value="Add Building">
-                <input type="reset" name="cancel" value="Cancel">
+                <input type="reset" name="reset" value="Reset">
 
             </form>
 
@@ -136,48 +136,11 @@
                     float: left;
                     z-index : 1;
                 }
-                #infoPanel div {
-                    float: top|right;
-                    background-color: white;
-                    width: 20%;
-                    height: 10%;
-                    z-index:2;
-                }
 
-                /*#popup {*/
-                /*position:absolute;*/
-                /*display:hidden;*/
-                /*top:50%;*/
-                /*left:50%;*/
-                /*width:400px;*/
-                /*height:586px;*/
-                /*margin-top:-263px;*/
-                /*margin-left:-200px;*/
-                /*background-color:#fff;*/
-                /*z-index:2;*/
-                /*padding:5px;*/
-                /*}*/
-                /*#overlay-back {*/
-                /*position : fixed;*/
-                /*top : 0;*/
-                /*left : 0;*/
-                /*width : 100%;*/
-                /*height : 100%;*/
-                /*background : #000;*/
-                /*opacity : 0.7;*/
-                /*filter : alpha(opacity=60);*/
-                /*z-index : 1;*/
-                /*display: none;*/
-                /*}*/
             </style>
 
             <div id="mapCanvas"></div>
-            <!--                    <div id="infoPanel">-->
-            <!--                        <div id="markerStatus"><i>Drag the marker to the position.</i></div>-->
-            <!--                        <b>Current position:</b>-->
-            <!--                        <div id="info"></div>-->
-            <!---->
-            <!--                    </div>-->
+
             </body>
             </html>
 

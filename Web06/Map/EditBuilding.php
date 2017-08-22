@@ -10,18 +10,19 @@
 <div style="width: 100%; height: 90%; float: bottom">
     <div style="width: 25%; float: left">
         <div>
-            <p>Search the building you want to edit.</p>
-            <form action="../database/SearchBuildingDb.php" method="post">
+            </br>
+            <form action="../Database/EditBuildingDb.php" method="post">
                 <table>
                     <tr>
                         <td> Name : </td>
                         <td>
-                            <input type="text" name="buildingName">
+                            <input type="number" name="EventId">
                         </td>
                     </tr>
                 </table>
 
-                <input type="submit" name="SearchEvent" value="Search">
+                <input type="submit" name="UpdateBuilding" value="Update Building">
+                <input type="submit" name="DeleteBuilding" value="Delete Building">
             </form>
 
         </div>
@@ -97,6 +98,7 @@
                     float: left;
                     z-index : 1;
                 }
+
             </style>
 
             <div id="mapCanvas"></div>

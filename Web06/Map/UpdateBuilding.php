@@ -1,15 +1,16 @@
 <?php
+//require '../include/header.php';
 
-if(isset($_POST['searchBuilding'])) {
-    $buildingName = $_POST['buildingName'];
+if(isset($_POST['SearchBuilding'])) {
+    $buildingName = $_POST['BuildingName'];
 
     require 'DbConn.php';
 
-    $sql = "SELECT * FROM EventTable WHERE name = '$buildingName'";
-    $query3 = mysqli_query($con, $sql)
+    $sql3 = "SELECT * FROM building WHERE name = '$buildingName'";
+    $query7 = mysqli_query($con, $sql3)
     or die(mysqli_error($con));
 
-    while($row = mysqli_fetch_assoc($query3)) {
+    while($row3 = mysqli_fetch_assoc($query7)) {
         echo '
             <!DOCTYPE html>
                 <html>
@@ -18,42 +19,42 @@ if(isset($_POST['searchBuilding'])) {
 //                            <link rel="stylesheet" type="text/css" href="../css/eventStyle.css">
                     </head>
                     <body>
-//                        <h1>Update Building</h1>
+                        <h1>Update Event</h1>
 //                        <div class="dive" style=" margin-right: 0px; margin-left: 350px; background-color: #0B314A" align=center>
-                            <form action="UpdateBuilding.php" method="post">
+                            <form action="../Database/EditBuildingDb.php" method="post">
                                 <table>
                                     <tr>
                                         <td> Name : </td>
                                         <td> 
-                                            <input type="text" name="BuildingName" value="'.$row['buildingName'].'">
+                                            <input type="text" name="BuildingName" value="'.$row3['BuildingName'].'">
                                         </td>
                                     </tr>
                                     
                                     <tr>
                                         <td> Description : </td>
                                         <td> 
-                                            <textarea rows="5" cols="30" name="Description">'.$row['Description'].'</textarea>
+                                            <textarea rows="5" cols="30" name="Description">'.$row3['Description'].'</textarea>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td> Latitude : </td>
+                                        <td> Latitudes : </td>
                                         <td> 
-                                            <input type="text" name="Latitudes" value="'.$row['Latitudes'].'">
+                                            <input type="text" name="Latitudes" value="'.$row3['Latitudes'].'">
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td> Contact Number : </td>
+                                        <td> Longitudes : </td>
                                         <td> 
-                                            <input type="text" name="Longitudes" value="'.$row['Longitudes'].'">
+                                            <input type="text" name="Longitudes" value="'.$row3['Longitudes'].'">
                                         </td>
                                     </tr>
-                                    
+
                                 </table>
 
-                            <input type="submit" name="UpdateEvent" value="Update Building">
-                            <input type="reset" value="Cancel">
+                            <input type="submit" name="UpdateBuilding2" value="Update Building">
+                            <input type="reset" value="Reset">
 
                             </form>
                         </div>
