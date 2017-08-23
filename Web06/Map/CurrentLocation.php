@@ -8,13 +8,13 @@
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
         #map {
-            height: 80%;
+            height: 100%;
         }
         /* Optional: Makes the sample page fill the window. */
         html, body {
             height: 100%;
-            margin: 10;
-            padding: 10;
+            margin: 0;
+            padding: 0;
         }
         .controls {
             margin-top: 10px;
@@ -44,15 +44,11 @@
     </style>
 </head>
 <body>
-
-<div>
-    <h1>UoC Location Based Services Platform</h1>
-</div>
-<!--<input id="origin-input" class="controls" type="text"-->
-<!--       placeholder="Enter an origin location">-->
+<input id="origin-input" class="controls" type="text"
+       placeholder="Enter an origin location">
 
 <input id="destination-input" class="controls" type="text"
-       placeholder="Search Location" onkeydown="myFunction(event)">
+       placeholder="Enter a destination location">
 
 <div id="map"></div>
 
@@ -60,7 +56,9 @@
     // This example requires the Places library. Include the libraries=places
     // parameter when you first load the API. For example:
     // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
     var marker;
+
     function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 16,
@@ -68,25 +66,22 @@
         });
         new AutocompleteDirectionsHandler(map);
 
-        marker = new google.maps.Marker({
-            map: map,
-            draggable: true,
-            animation: google.maps.Animation.DROP,
-            position: {lat: $latitude, lng: $longitude}
-        });
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(ORIG.getPosition().lat(), ORIG.getPosition().lng()),
-            map : map
-        });
-        marker.addListener('click', toggleBounce);
-    }
-    function toggleBounce() {
-        if (marker.getAnimation() !== null) {
-            marker.setAnimation(null);
-        } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-        }
-    }
+//        marker = new google.maps.Marker({
+//            map: map,
+//            draggable: true,
+//            animation: google.maps.Animation.DROP,
+//            position: {lat: $latitude, lng: $longitude}
+//        });
+//        marker.addListener('click', toggleBounce);
+//    }
+//
+//    function toggleBounce() {
+//        if (marker.getAnimation() !== null) {
+//            marker.setAnimation(null);
+//        } else {
+//            marker.setAnimation(google.maps.Animation.BOUNCE);
+//        }
+//    }
     /**
      * @constructor
      */
@@ -99,15 +94,16 @@
         this.directionsService = new google.maps.DirectionsService;
         this.directionsDisplay = new google.maps.DirectionsRenderer;
         this.directionsDisplay.setMap(map);
-        var ORIG = new google.maps.places.Autocomplete(
+        var originAutocomplete = new google.maps.places.Autocomplete(
             originInput, {placeIdOnly: true});
         var destinationAutocomplete = new google.maps.places.Autocomplete(
             destinationInput, {placeIdOnly: true});
-        this.setupPlaceChangedListener(ORIG, 'ORIG');
+        this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
         this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
     }
+
     AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
         var me = this;
         autocomplete.bindTo('bounds', this.map);
@@ -125,7 +121,6 @@
             me.route();
         });
     };
-
     AutocompleteDirectionsHandler.prototype.route = function() {
         if (!this.originPlaceId || !this.destinationPlaceId) {
             return;
@@ -142,18 +137,6 @@
                 window.alert('Directions request failed due to ' + status);
             }
         });
-    };
-
-    function myFunction(enter) {
-        var x = enter.keyCode;
-        if (x == 13) {
-            alert ("You selected a place!");
-        }
-    }
-
-
-    destinationAutocomplete.onclick = function() {
-        alert('Click!');
     };
 
     <button onclick="getLocation()">My Location</button>
@@ -181,9 +164,46 @@
 //        position: {searchPlace}
     });
     marker.setMap(map);
-
+    //        marker.addListener('click', toggleBounce);
 </script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZXHp9g0R5pEPgs2AlSUQBBBv0xe8vIhY&libraries=places&callback=initMap"
         async defer></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="getLocation()">My Location</button>
+
+<p id="demo"></p>
+
+<script>
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";}
+    }
+
+    $latitudes = position.coords.latitude;
+    $longitudes = position.coords.longitude;
+//    function showPosition(position) {
+//        x.innerHTML="Latitude: " + position.coords.latitude +
+//            "<br>Longitude: " + position.coords.longitude;
+//    }
+
+    var marker = new google.maps.Marker({
+            position: {lat: $latitude, lng: $longitude}
+//        position: {searchPlace}
+    });
+    marker.setMap(map);
+    //        marker.addListener('click', toggleBounce);
+</script>
+
 </body>
 </html>

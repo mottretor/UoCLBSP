@@ -1,8 +1,7 @@
 <?php
-require '../Map/EditBuilding.php';
 
 if(isset($_POST['UpdateBuilding'])) {
-    $buildingName = $_POST['BuildingName'];
+    $buildingName = $_POST['buildingName'];
     $description = $_POST['Description'];
     $latitudes = $_POST['Latitudes'];
     $longitudes = $_POST['Longitudes'];
@@ -33,5 +32,6 @@ if(isset($_POST['DeleteBuilding'])) {
     mysqli_query($con, $query6)
     or die(mysqli_error($con));
 }
+
 
 ?>

@@ -11,7 +11,7 @@
     <div style="width: 25%; float: left">
         <div>
             <p>Search the building you want to edit.</p>
-            <form action="../Database/EditBuildingDb.php" method="post">
+            <form action="../Database/DataDisplayDb.php" method="post">
                 <table>
                     <tr>
                         <td> Name : </td>
