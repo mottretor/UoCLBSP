@@ -19,7 +19,7 @@
     </style>
 </head>
 <body>
-<div id="map"></div>
+<div id="map" style="height: 50%"></div>
 <script>
 
     // This example creates an interactive map which constructs a polyline based on
@@ -31,7 +31,7 @@
 
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 7,
+            zoom: 18,
             center: {lat: 6.902215976621638, lng: 79.86069999999995}  // Center the map
         });
 
@@ -46,6 +46,8 @@
         map.addListener('click', addLatLng);
     }
 
+    var vertices = [];
+
     // Handles click events on a map, and adds a new point to the Polyline.
     function addLatLng(event) {
         var path = poly.getPath();
@@ -53,6 +55,8 @@
         // Because path is an MVCArray, we can simply append a new coordinate
         // and it will automatically appear.
         path.push(event.latLng);
+        vertices.push(event.latLng);
+        document.write(vertices);
 
         // Add a new marker at the new plotted point on the polyline.
         var marker = new google.maps.Marker({

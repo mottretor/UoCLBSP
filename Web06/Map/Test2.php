@@ -1,41 +1,25 @@
-<!DOCTYPE html>
-<html>
+<?php
 
-<body>
+set_time_limit(0);
 
-<div id="map" style="width:100%;height:500px"></div>
+$PORT = 2017; //the port on which we are connecting to the "remote" machine
+$HOST = "localhost"; //the ip of the remote machine (in this case it's the same machine)
+$sock = socket_create(AF_INET, SOCK_STREAM, 0) //Creating a TCP socket
+or die("error: could not create socket\n");
 
-<script>
-    function myMap() {
-        var myCenter = new google.maps.LatLng(6.9022, 79.8607);
-        var mapCanvas = document.getElementById("map");
-        var mapOptions = {center: myCenter, zoom:};
-        var map = new google.maps.Map(mapCanvas, mapOptions);
-        var marker = new google.maps.Marker({position: myCenter, draggable: true});
-        marker.setMap(map);
+$succ = socket_connect($sock, $HOST, $PORT) //Connecting to to server using that socket
+or die("error: could not connect to host\n");
 
-        updateMarkerPosition(latLng);
-        geocodePosition(latLng);
+$text = "Thadiyaaaaaa"+'\r'; //the text we want to send to the server
 
-        google.maps.event.addListener(marker, 'dragstart', function () {
-            updateMarkerAddress('Dragging...');
-        });
+socket_sendto($sock, $text, strlen($text), MSG_EOF, '127.0.0.1', '2017');
+//socket_write($sock, $text . "\n", strlen($text) + 1) //Writing the text to the socket
+//  or die("error: failed to write to socket\n");
 
-        google.maps.event.addListener(marker, 'drag', function () {
-            updateMarkerStatus('Dragging...');
-            updateMarkerPosition(marker.getPosition());
-        });
 
-        google.maps.event.addListener(marker, 'dragend', function () {
-            updateMarkerStatus('Drag ended');
-            geocodePosition(marker.getPosition());
-        });
-    }
 
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZXHp9g0R5pEPgs2AlSUQBBBv0xe8vIhY&callback=myMap"></script>
-
-</body>
-</html>
+//$reply = socket_read($sock, 10000, PHP_NORMAL_READ) //Reading the reply from socket
+//or die("error: failed to read from socket\n");
+//
+//echo $reply;
+?>
