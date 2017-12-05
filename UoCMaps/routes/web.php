@@ -14,3 +14,23 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/addbuilding', function () {
+    return view('addbuilding');
+});
+
+Route::get('/searchbuilding', function () {
+    return view('searchbuilding');
+});
+
+Route::get('/admin', function () {
+    return view('admin');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
