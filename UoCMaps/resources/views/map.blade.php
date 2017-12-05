@@ -17,7 +17,7 @@
                 latLng: pos
             });
     }
-
+    
                         function updateMarkerStatus(str) {
                         document.getElementById('markerStatus').innerHTML = str;
                     }

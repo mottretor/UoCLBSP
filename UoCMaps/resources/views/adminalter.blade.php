@@ -1,4 +1,4 @@
-@section('content')
+<!-- @section('midcontent')-->
 
 <!-- include header --> 
 
@@ -6,14 +6,14 @@
 	<!-- include form -->
 	<div style="width: 25%; height:100%; float: left">
 		@include('forms.addbuildingform')
-	<!-- </div>
+	</div>
 
-	<!- include map -->
+	<!-- include map -->
 	<div style="width: 75%">
 		@include('map')
 	</div> 
 </div>
 
-@endsection
+<!-- @endsection -->
 
  
