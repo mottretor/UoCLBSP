@@ -47,6 +47,10 @@ Route::get('/test', function () {
     return view('test');
 });
 
+Route::get('/containsLocation', function () {
+    return view('containsLocation');
+});
+
 // Route::get('/myMap', function () {
 //     return view('myMap');
 // });
