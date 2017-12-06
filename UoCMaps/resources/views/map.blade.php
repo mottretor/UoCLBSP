@@ -1,24 +1,18 @@
-@section('styles')
-<style>
-    #map{
-        height: 100%;
-        width: 100%
-    }
-</style>
 
-@endsection
+<!-- 
+            <head>
+                <!--                        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />-->
+                <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+                <script type="text/javascript">
+                    var geocoder = new google.maps.Geocoder();
 
-<div id="map"></div>
+                    function geocodePosition(pos) {
+                        geocoder.geocode({
+                            latLng: pos
+                        });
+                    }
 
-<script>
-    var geocoder = new google.maps.Geocoder('map');
-        function geocodePosition(pos) {
-            geocoder.geocode({
-                latLng: pos
-            });
-    }
-    
-                        function updateMarkerStatus(str) {
+                    function updateMarkerStatus(str) {
                         document.getElementById('markerStatus').innerHTML = str;
                     }
 
@@ -29,7 +23,7 @@
 
                     function initialize() {
                         var latLng = new google.maps.LatLng(6.902215976621638, 79.86069999999995);
-                        var map = new google.maps.Map(document.getElementById('map'), {
+                        var map = new google.maps.Map(document.getElementById('mapCanvas'), {
                             zoom: 19,
                             center: latLng,
                             mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -58,8 +52,41 @@
 
                     // Onload handler to fire off the app.
                     google.maps.event.addDomListener(window, 'load', initialize);
-
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDlzy3HlhnvXsLI2rVbAdgAakwCTdXAuM&libraries=places&callback=initMap"
+                </script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZXHp9g0R5pEPgs2AlSUQBBBv0xe8vIhY&libraries=places&callback=initMap"
                         async defer></script>
+                <!--                        <script async defer-->
+                <!--                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZXHp9g0R5pEPgs2AlSUQBBBv0xe8vIhY&callback=myMap">-->
+                <!--                        </script>-->
+            <!-- </head> -->
+            <!-- <body> -->
+            <style>
+                #mapCanvas {
+                    width: 100%;
+                    height: 100%;
+                    float: left;
+                    z-index : 1;
+                }
+
+            </style>
+
+            <div id="mapCanvas"></div>
+
+            </body>
+            
+
+
+
+<style>
+                #map {
+                    width: 100%;
+                    height: 100%;
+                    float: left;
+                    z-index : 1;
+                }
+
+            </style>
+
+
+
+
