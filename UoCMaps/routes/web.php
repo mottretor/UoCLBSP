@@ -35,6 +35,10 @@ Route::get('/adminalter', function () {
     return view('adminalter');
 });
 
+Route::get('/adminmappaths', function () {
+    return view('adminmappaths');
+});
+
 Route::get('/map', function () {
     return view('map');
 });
