@@ -41,10 +41,45 @@
         var uoc = new google.maps.Polygon({paths: uoccoords});
 
         //map.data.add({geometry: new google.maps.Data.Polygon([uoccoords])});
-        
-        function checkLoc(locs){
 
-        }
+        var source = new google.maps.LatLng (6.897899, 79.860451);
+        var destination = new google.maps.LatLng (6.901209, 79.860429);
+        
+
+        var srcdst =  {'source':
+                        [ {'latitude':''}, 
+                          {'longitude':''}, 
+                          {'inside':''}
+                        ], 
+                      'destination': 
+                        [ {'latitude':''}, 
+                          {'longitude':''}, 
+                          {'inside':''}
+                        ]
+                      };
+        
+
+        //console.log(google.maps.geometry.poly.containsLocation(srcdst.source[0]['latitude'], uoc));
+        
+        srcdst.source[0]['latitude'] = source.latitude;
+        srcdst.source[1]['longitude'] = source.longitude;
+        srcdst.destination[0]['latitude'] = destination.latitude;
+        srcdst.destination[1]['longitude'] = destination.longitude;
+
+        srcdst.source[2]['inside'] = google.maps.geometry.poly.containsLocation(source, uoc) ? 1 : 0;
+        srcdst.destination[2]['inside'] = google.maps.geometry.poly.containsLocation(destination, uoc) ? 1 : 0;
+        //srcdst.source[2]['inside'] = 1;
+        
+        //srcdst.source[2]['inside'] = 1;
+        
+
+        var detailsJSon = JSON.stringify(srcdst);
+
+        
+        //SEND THE JSON THROUGH THE SOCKET***************************
+
+
+
 
         /*function initialize() {
           var mapOptions = {
@@ -67,7 +102,7 @@
           google.maps.event.addListener(map, 'click', function(event) {
             console.log(google.maps.geometry.poly.containsLocation(event.latLng, bermudaTriangle));
           });
-        }*/
+        }
 
         //google.maps.event.addDomListener(window, 'load', initialize);
         google.maps.event.addListener(map, 'click', function(e) {
@@ -95,8 +130,9 @@
               scale: 10
             }
           });
-          //console.log(google.maps.geometry.poly.containsLocation(e.latLng, bermudaTriangle));
-        });
+          console.log(google.maps.geometry.poly.containsLocation(e.latLng, bermudaTriangle));
+        });*/
+      window.alert(detailsJSon);
       }
       
 
