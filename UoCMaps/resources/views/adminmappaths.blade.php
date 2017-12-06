@@ -21,7 +21,7 @@
   <body>
     <div id="map"></div>
     <script>
-    	var pathsjson = '{"vertexes":[{"latitude":6.9022,"id":9,"longitude":79.8606},{"latitude":6.9024,"id":10,"longitude":79.8605},{"latitude":6.9016,"id":11,"longitude":79.86},{"latitude":6.9021,"id":12,"longitude":79.8596}],"edges":[{"destination":10,"id":9,"source":9},{"destination":11,"id":10,"source":9},{"destination":12,"id":11,"source":10},{"destination":12,"id":12,"source":11},{"destination":11,"id":12,"source":10}]}';
+    	var pathsjson = '{"vertexes":[{"latitude":6.9022,"id":9,"longitude":79.8606},{"latitude":6.9024,"id":10,"longitude":79.8605},{"latitude":6.9016,"id":11,"longitude":79.86},{"latitude":6.9021,"id":12,"longitude":79.8596}],"edges":[{"destination":10,"id":9,"source":9},{"destination":11,"id":10,"source":9},{"destination":12,"id":11,"source":10},{"destination":12,"id":12,"source":11}]}';
 
 		var pathsarr = JSON.parse(pathsjson);
 		/*var path = [];
@@ -76,9 +76,9 @@
 			var temppath = new google.maps.Polyline({
 	          path: templine,
 	          geodesic: true,
-	          strokeColor: 'lightgreen',
+	          strokeColor: 'blue',
 	          strokeOpacity: 1.0,
-	          strokeWeight: 4
+	          strokeWeight: 6
 	        });
 	        templine=[];
 	        temppath.setMap(map);

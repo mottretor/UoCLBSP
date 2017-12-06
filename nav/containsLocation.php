@@ -61,10 +61,10 @@
 
         //console.log(google.maps.geometry.poly.containsLocation(srcdst.source[0]['latitude'], uoc));
         
-        srcdst.source[0]['latitude'] = source.latitude;
-        srcdst.source[1]['longitude'] = source.longitude;
-        srcdst.destination[0]['latitude'] = destination.latitude;
-        srcdst.destination[1]['longitude'] = destination.longitude;
+        srcdst.source[0]['latitude'] = source.lat();
+        srcdst.source[1]['longitude'] = source.lng();
+        srcdst.destination[0]['latitude'] = destination.lat();
+        srcdst.destination[1]['longitude'] = destination.lng();
 
         srcdst.source[2]['inside'] = google.maps.geometry.poly.containsLocation(source, uoc) ? 1 : 0;
         srcdst.destination[2]['inside'] = google.maps.geometry.poly.containsLocation(destination, uoc) ? 1 : 0;
