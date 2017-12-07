@@ -26,10 +26,10 @@
        
 
       function initMap() {
-        // var map = new google.maps.Map(document.getElementById('map'), {
-        //   center: {lat: 6.901120, lng: 79.860532},
-        //   zoom: 17,
-        // });
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 6.901120, lng: 79.860532},
+          zoom: 17,
+        });
 
         var uoccoords = [
           {lat: 6.903045, lng: 79.860281},
@@ -82,33 +82,52 @@
         var url = "http://ec2-52-72-156-17.compute-1.amazonaws.com:1978";
         var method = "POST";
         var postData = json;
+
+        // want shouldBeAsync = true.
+        // Otherwise, it'll block ALL execution waiting for server response.
         var shouldBeAsync = true;
 
         var request = new XMLHttpRequest();
 
-        
+        // request.onreadystatechange = function(){
+        //  if(request.readyState == XMLHttpRequest.DONE && request.status ==200){
+        //    alert('request.responseXML');
+        //  }
+        // }
         request.onload = function () {
-          //document.write();
-          //var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
-          
-          alert(request.responseText);
-            
-          //console.error(request.statusText);
-          
-          //var data = request.responseText;
-          //window.alert(data);
-          //document.write(status);
+          var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+          var data = request.response;
+          alert(data); // Returned data, e.g., an HTML document.
 
-     
-          //window.alert('done'); 
+          var sampleData = '{"steps":[{"latitude": 6.903045, "longitude": 79.860281},{"latitude": 6.898815, "longitude": 79.860429},{"latitude": 6.899528, "longitude": 79.859785},{"latitude": 6.903181, "longitude": 79.858584},{"latitude": 6.902351, "longitude": 79.857511},{"latitude": 6.901509, "longitude": 79.856942},{"latitude": 6.901019, "longitude": 79.855193},{"latitude": 6.900242, "longitude": 79.855440}]}';
+
+          var newPath = JSON.parse(sampleData);
+
+          var newLine =[],lat,lng;
+          for (var i = 0; i < newPath.steps.length; i++) {
+            lat = newPath.steps[i]["latitude"];
+            lng = newPath.steps[i]["longitude"];
+            newLine.push({'lat':lat, 'lng':lng});
+          }
+
+          var finalPath = new google.maps.Polyline({
+            path: newLine,
+            geodesic: true,
+            strokeColor: 'blue',
+            strokeOpacity: 1.0,
+            strokeWeight: 4
+          });
+          
+          finalPath.setMap(map);
+
+
         }
-
 
         request.open(method, url, shouldBeAsync);
 
         //request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         //request.setRequestHeader("Authorization");
-        //request.setRequestHeader("Authorization", "  ");
+        //request.setRequestHeader("Authorization", null);
         // Or... whatever
 
         // Actually sends the request to the server.
@@ -116,70 +135,12 @@
         //window.alert(json);
         //documet.write('dsdsds');
             
-
-
-        /*function initialize() {
-          var mapOptions = {
-            zoom: 5,
-            center: new google.maps.LatLng(24.886, -70.269),
-            mapTypeId: 'terrain'
-          };
-
-          var map = new google.maps.Map(document.getElementById('map'),
-              mapOptions);
-
-          var bermudaTriangle = new google.maps.Polygon({
-            paths: [
-              new google.maps.LatLng(25.774, -80.190),
-              new google.maps.LatLng(18.466, -66.118),
-              new google.maps.LatLng(32.321, -64.757)
-            ]
-          });
-
-          google.maps.event.addListener(map, 'click', function(event) {
-            console.log(google.maps.geometry.poly.containsLocation(event.latLng, bermudaTriangle));
-          });
-        }
-
-        //google.maps.event.addDomListener(window, 'load', initialize);
-        google.maps.event.addListener(map, 'click', function(e) {
-          
-          var resultColor =
-              google.maps.geometry.poly.containsLocation(e.latLng, uoc) ?
-              'blue' :
-              'red';
-
-          var resultPath =
-              google.maps.geometry.poly.containsLocation(e.latLng, uoc) ?
-              // A triangle.
-              "m 0 -1 l 1 2 -2 0 z" :
-              google.maps.SymbolPath.CIRCLE;
-
-          new google.maps.Marker({
-            position: e.latLng,
-            map: map,
-            icon: {
-              path: resultPath,
-              fillColor: resultColor,
-              fillOpacity: .2,
-              strokeColor: 'white',
-              strokeWeight: .5,
-              scale: 10
-            }
-          });
-          console.log(google.maps.geometry.poly.containsLocation(e.latLng, bermudaTriangle));
-        });*/
       //window.alert(detailsJSon);
-      }
-      
-
-  
-
-        
+      }   
 
     //google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC564I5ucBK7bdyzJvVzTeG_AuPlubn3kY&libraries=geometry"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC564I5ucBK7bdyzJvVzTeG_AuPlubn3kY&libraries=geometry"></script> -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC564I5ucBK7bdyzJvVzTeG_AuPlubn3kY&libraries=geometry&callback=initMap"
          async defer></script>
 
