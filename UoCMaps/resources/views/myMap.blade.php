@@ -3,23 +3,24 @@
   <head>
     <style>
        #map {
-        height: 400px;
+        height: 600px;
         width: 100%;
        }
     </style>
   </head>
   <body>
-    <h3>My Google Maps Demo</h3>
+    <h2 align="center">කොළඹ විශ්ව විද්‍යාලයීය පරිගණක අධ්‍යයනායතනය</h2>
     <div id="map"></div>
     <script>
       function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
+        var ucsc = {lat: 6.902215976621638, lng: 79.86069999999995};
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
+          zoom: 16,
+          center: ucsc,
+          mapTypeId: 'satellite'
         });
         var marker = new google.maps.Marker({
-          position: uluru,
+          position: ucsc,
           map: map
         });
       }

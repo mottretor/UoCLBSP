@@ -1,7 +1,7 @@
-@section('content')
-
 @extends('layouts.app')
 
-@include('adminalter')
+@section('content')
+
+	@include('adminalter')
 
 @endsection

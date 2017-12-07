@@ -31,6 +31,31 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-Auth::routes();
+Route::get('/adminalter', function () {
+    return view('adminalter');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/adminmappaths', function () {
+    return view('adminmappaths');
+});
+
+Route::get('/map', function () {
+    return view('map');
+});
+
+Route::get('/test', function () {
+    return view('test');
+});
+
+Route::get('/containsLocation', function () {
+    return view('containsLocation');
+});
+
+// Route::get('/myMap', function () {
+//     return view('myMap');
+// });
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+?>
