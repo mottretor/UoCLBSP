@@ -1,18 +1,7 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
-    return view('myMap');
+    return view('manage');
 });
 
 Route::get('/home', function () {
@@ -20,7 +9,7 @@ Route::get('/home', function () {
 });
 
 Route::get('/addbuilding', function () {
-    return view('addbuilding');
+    return view('buildings.addbuilding');
 });
 
 Route::get('/searchbuilding', function () {
@@ -35,10 +24,6 @@ Route::get('/adminalter', function () {
     return view('adminalter');
 });
 
-Route::get('/adminmappaths', function () {
-    return view('adminmappaths');
-});
-
 Route::get('/map', function () {
     return view('map');
 });
@@ -47,23 +32,7 @@ Route::get('/test', function () {
     return view('test');
 });
 
-Route::get('/containsLocation', function () {
-    return view('containsLocation');
-});
+Route::post("student",'buildingController@store');
 
-Route::get('/httprequest', function () {
-    return view('httprequest');
-});
-
-Route::get('/socket', function () {
-    return view('socket');
-});
-
-// Route::get('/myMap', function () {
-//     return view('myMap');
-// });
-
-//Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
 ?>
+
