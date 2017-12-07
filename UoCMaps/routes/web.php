@@ -51,6 +51,14 @@ Route::get('/containsLocation', function () {
     return view('containsLocation');
 });
 
+Route::get('/httprequest', function () {
+    return view('httprequest');
+});
+
+Route::get('/socket', function () {
+    return view('socket');
+});
+
 // Route::get('/myMap', function () {
 //     return view('myMap');
 // });

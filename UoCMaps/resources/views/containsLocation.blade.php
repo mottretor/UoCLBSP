@@ -26,10 +26,10 @@
        
 
       function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 6.901120, lng: 79.860532},
-          zoom: 17,
-        });
+        // var map = new google.maps.Map(document.getElementById('map'), {
+        //   center: {lat: 6.901120, lng: 79.860532},
+        //   zoom: 17,
+        // });
 
         var uoccoords = [
           {lat: 6.903045, lng: 79.860281},
@@ -47,38 +47,75 @@
         
 
         var srcdst =  {'source':
-                        [ {'latitude':'', 
+                         {'latitude':'', 
                           'longitude':'', 
                           'inside':''}
-                        ], 
+                        , 
                       'destination': 
-                        [ {'latitude':'', 
+                         {'latitude':'', 
                           'longitude':'', 
                           'inside':''}
-                        ]
+                        
                       };
         
 
         //console.log(google.maps.geometry.poly.containsLocation(srcdst.source[0]['latitude'], uoc));
         
-        srcdst.source[0]['latitude'] = source.lat();
-        srcdst.source[0]['longitude'] = source.lng();
-        srcdst.destination[0]['latitude'] = destination.lat();
-        srcdst.destination[0]['longitude'] = destination.lng();
+        srcdst.source['latitude'] = source.lat();
+        srcdst.source['longitude'] = source.lng();
+        srcdst.destination['latitude'] = destination.lat();
+        srcdst.destination['longitude'] = destination.lng();
 
-        srcdst.source[0]['inside'] = google.maps.geometry.poly.containsLocation(source, uoc) ? 1 : 0;
-        srcdst.destination[0]['inside'] = google.maps.geometry.poly.containsLocation(destination, uoc) ? 1 : 0;
+        srcdst.source['inside'] = google.maps.geometry.poly.containsLocation(source, uoc) ? 1 : 0;
+        srcdst.destination['inside'] = google.maps.geometry.poly.containsLocation(destination, uoc) ? 1 : 0;
         //srcdst.source[2]['inside'] = 1;
         
         //srcdst.source[2]['inside'] = 1;
         
 
-        var detailsJSon = JSON.stringify(srcdst);
+        var json = JSON.stringify(srcdst);
 
         
         //SEND THE JSON THROUGH THE SOCKET***************************
 
 
+        var url = "http://ec2-52-72-156-17.compute-1.amazonaws.com:1978";
+        var method = "POST";
+        var postData = json;
+        var shouldBeAsync = true;
+
+        var request = new XMLHttpRequest();
+
+        
+        request.onload = function () {
+          //document.write();
+          //var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+          
+          alert(request.responseText);
+            
+          //console.error(request.statusText);
+          
+          //var data = request.responseText;
+          //window.alert(data);
+          //document.write(status);
+
+     
+          //window.alert('done'); 
+        }
+
+
+        request.open(method, url, shouldBeAsync);
+
+        //request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        //request.setRequestHeader("Authorization");
+        //request.setRequestHeader("Authorization", "  ");
+        // Or... whatever
+
+        // Actually sends the request to the server.
+        request.send(postData);
+        //window.alert(json);
+        //documet.write('dsdsds');
+            
 
 
         /*function initialize() {
@@ -132,7 +169,7 @@
           });
           console.log(google.maps.geometry.poly.containsLocation(e.latLng, bermudaTriangle));
         });*/
-      window.alert(detailsJSon);
+      //window.alert(detailsJSon);
       }
       
 
@@ -145,5 +182,10 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC564I5ucBK7bdyzJvVzTeG_AuPlubn3kY&libraries=geometry"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC564I5ucBK7bdyzJvVzTeG_AuPlubn3kY&libraries=geometry&callback=initMap"
          async defer></script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+ -->
+<!-- <script type="text/javascript" src="/js/httprequest.js"></script> -->
+
   </body>
 </html>
