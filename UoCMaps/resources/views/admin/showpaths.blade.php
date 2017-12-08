@@ -33,19 +33,19 @@
 			 path.push({'lat':lat, 'lng':lng});
 		}*/
 
-		var src,dst,templine=[],lat,lng;
-		for (var i = 0; i < pathsarr.edges.length; i++) {
-			dst = pathsarr.edges[i]["destination"];
-			src = pathsarr.edges[i]["source"];
-			for (var j = 0; j < pathsarr.vertexes.length; j++) {
-				if(pathsarr.vertexes[j]["id"]==dst || pathsarr.vertexes[j]["id"]==src){
-					lat = pathsarr.vertexes[j]["latitude"];
-			 		lng = pathsarr.vertexes[j]["longitude"];
-			 		templine.push({'lat':lat, 'lng':lng});
-				}
-			}
+		// var src,dst,templine=[],lat,lng;
+		// for (var i = 0; i < pathsarr.edges.length; i++) {
+		// 	dst = pathsarr.edges[i]["destination"];
+		// 	src = pathsarr.edges[i]["source"];
+		// 	for (var j = 0; j < pathsarr.vertexes.length; j++) {
+		// 		if(pathsarr.vertexes[j]["id"]==dst || pathsarr.vertexes[j]["id"]==src){
+		// 			lat = pathsarr.vertexes[j]["latitude"];
+		// 	 		lng = pathsarr.vertexes[j]["longitude"];
+		// 	 		templine.push({'lat':lat, 'lng':lng});
+		// 		}
+		// 	}
 
-		}
+		// }
 
 		//document.getelementById("demo").innerHTML = path;
 

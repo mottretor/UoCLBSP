@@ -47,14 +47,14 @@
         
 
         var srcdst =  {'source':
-                        [ {'latitude':''}, 
-                          {'longitude':''}, 
-                          {'inside':''}
+                        [ {'latitude':'', 
+                          'longitude':'', 
+                          'inside':''}
                         ], 
                       'destination': 
-                        [ {'latitude':''}, 
-                          {'longitude':''}, 
-                          {'inside':''}
+                        [ {'latitude':'', 
+                          'longitude':'', 
+                          'inside':''}
                         ]
                       };
         
@@ -62,12 +62,12 @@
         //console.log(google.maps.geometry.poly.containsLocation(srcdst.source[0]['latitude'], uoc));
         
         srcdst.source[0]['latitude'] = source.lat();
-        srcdst.source[1]['longitude'] = source.lng();
+        srcdst.source[0]['longitude'] = source.lng();
         srcdst.destination[0]['latitude'] = destination.lat();
-        srcdst.destination[1]['longitude'] = destination.lng();
+        srcdst.destination[0]['longitude'] = destination.lng();
 
-        srcdst.source[2]['inside'] = google.maps.geometry.poly.containsLocation(source, uoc) ? 1 : 0;
-        srcdst.destination[2]['inside'] = google.maps.geometry.poly.containsLocation(destination, uoc) ? 1 : 0;
+        srcdst.source[0]['inside'] = google.maps.geometry.poly.containsLocation(source, uoc) ? 1 : 0;
+        srcdst.destination[0]['inside'] = google.maps.geometry.poly.containsLocation(destination, uoc) ? 1 : 0;
         //srcdst.source[2]['inside'] = 1;
         
         //srcdst.source[2]['inside'] = 1;

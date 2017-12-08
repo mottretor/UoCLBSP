@@ -81,12 +81,25 @@ Route::get('/test', function () {
     return view('test');
 });
 
+<<<<<<< HEAD
 Route::get('/test2', function () {
     return view('test2');
 });
 
 Route::get('/test3', function () {
     return view('test3');
+=======
+Route::get('/containsLocation', function () {
+    return view('containsLocation');
+});
+
+Route::get('/httprequest', function () {
+    return view('httprequest');
+});
+
+Route::get('/socket', function () {
+    return view('socket');
+>>>>>>> origin/master
 });
 
 // Route::get('/myMap', function () {
