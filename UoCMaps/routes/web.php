@@ -15,22 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// user*******************************************************************************
+
 
 Route::get('/home', function () {
     return view('home');
 });
 
-<<<<<<< HEAD
+
 Route::get('/getCoords', function () {
     return view('getCoords');
-=======
+});
 
 Route::get('/searchbuilding', function () {
     return view('searchbuilding');
 });
 
-// admin*******************************************************************************
 
 Route::get('/showpoints', function () {
     return view('admin.showpoints');
@@ -50,7 +49,7 @@ Route::get('/showpolygon', function () {
 
 Route::get('/addbuilding', function () {
     return view('addbuilding');
->>>>>>> origin/master
+
 });
 
 Route::get('/addpolygon', function () {
@@ -86,14 +85,15 @@ Route::get('/test', function () {
     return view('test');
 });
 
-<<<<<<< HEAD
+
 Route::get('/test2', function () {
     return view('test2');
 });
 
 Route::get('/test3', function () {
     return view('test3');
-=======
+});
+
 Route::get('/containsLocation', function () {
     return view('containsLocation');
 });
@@ -104,7 +104,7 @@ Route::get('/httprequest', function () {
 
 Route::get('/socket', function () {
     return view('socket');
->>>>>>> origin/master
+
 });
 
 Route::get('/searchPlace', function () {

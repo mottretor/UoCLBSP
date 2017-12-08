@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -132,7 +132,4 @@ function initialize() {
     </script>
   </body>
 </html>
-=======
-<br><br><br>
-<h1 align="center">මෙය පරීක්ෂණාත්මක පිටුවකි.</h1>
->>>>>>> origin/master
+

@@ -13,18 +13,18 @@
     <div id="map"></div>
     <script>
       function initMap() {
-<<<<<<< HEAD
+
         var uluru = {lat: 6.902215976621638,  lng: 79.86069999999995};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 19,
           center: uluru
-=======
+        }
         var ucsc = {lat: 6.902215976621638, lng: 79.86069999999995};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 16,
           center: ucsc,
           mapTypeId: 'satellite'
->>>>>>> origin/master
+
         });
         var marker = new google.maps.Marker({
           position: ucsc,
