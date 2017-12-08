@@ -19,8 +19,8 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/addbuilding', function () {
-    return view('addbuilding');
+Route::get('/getCoords', function () {
+    return view('getCoords');
 });
 
 Route::get('/searchbuilding', function () {
@@ -57,6 +57,20 @@ Route::get('/httprequest', function () {
 
 Route::get('/socket', function () {
     return view('socket');
+});
+
+Route::get('/searchPlace', function () {
+    return view('searchPlace');
+});
+
+Route::get('autocomplete-search',array('as'=>'autocomplete.search','uses'=>'AutoCompleteController@index'));
+Route::get('autocomplete-ajax',array('as'=>'autocomplete.ajax','uses'=>'AutoCompleteController@ajaxData'));
+//get the data from the database ---> just goto http://localhost:8000/listTest
+Route::get('listTest', function () {
+
+    $listTest = DB::table('building')->get();
+
+    return view('listTest', ['listTest' => $listTest]);
 });
 
 // Route::get('/myMap', function () {

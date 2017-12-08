@@ -97,16 +97,31 @@
         request.onload = function () {
           var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
           var data = request.response;
-          alert(data); // Returned data, e.g., an HTML document.
+          //alert(data); // Returned data, e.g., an HTML document.
 
-          var sampleData = '{"steps":[{"latitude": 6.903045, "longitude": 79.860281},{"latitude": 6.898815, "longitude": 79.860429},{"latitude": 6.899528, "longitude": 79.859785},{"latitude": 6.903181, "longitude": 79.858584},{"latitude": 6.902351, "longitude": 79.857511},{"latitude": 6.901509, "longitude": 79.856942},{"latitude": 6.901019, "longitude": 79.855193},{"latitude": 6.900242, "longitude": 79.855440}]}';
+          // var sampleData = '{"steps":[{"latitude": 6.903045, "longitude": 79.860281},{"latitude": 6.902116, "longitude": 79.861996},{"latitude": 6.899326, "longitude": 79.860805},{"latitude": 6.898815, "longitude": 79.860429},{"latitude": 6.899528, "longitude": 79.859785},{"latitude": 6.903181, "longitude": 79.858584},{"latitude": 6.902351, "longitude": 79.857511},{"latitude": 6.901509, "longitude": 79.856942},{"latitude": 6.901019, "longitude": 79.855193},{"latitude": 6.900242, "longitude": 79.855440}]}';
 
-          var newPath = JSON.parse(sampleData);
+          var newPath = JSON.parse(data);
 
           var newLine =[],lat,lng;
           for (var i = 0; i < newPath.steps.length; i++) {
+            
             lat = newPath.steps[i]["latitude"];
             lng = newPath.steps[i]["longitude"];
+            if(i==0){
+              var markerA = new google.maps.Marker({
+              position: {lat: lat, lng: lng},
+              map: map,
+              label:"A"
+              });
+            }
+            else if(i==newPath.steps.length-1){
+              var markerB = new google.maps.Marker({
+              position: {lat: lat, lng: lng},
+              map: map,
+              label:"B"
+              });
+            }
             newLine.push({'lat':lat, 'lng':lng});
           }
 
@@ -115,7 +130,7 @@
             geodesic: true,
             strokeColor: 'blue',
             strokeOpacity: 1.0,
-            strokeWeight: 4
+            strokeWeight: 5
           });
           
           finalPath.setMap(map);
