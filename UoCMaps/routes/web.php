@@ -85,11 +85,11 @@ Route::get('/test', function () {
     return view('test');
 });
 
-<<<<<<< HEAD
-// HEAD
-=======
 
->>>>>>> origin/master
+// HEAD
+
+
+
 Route::get('/test2', function () {
     return view('test2');
 });
@@ -98,13 +98,12 @@ Route::get('/test3', function () {
     return view('test3');
 });
 
-<<<<<<< HEAD
+
 Route::get('/test4', function () {
     return view('test4');
 });
 
-=======
->>>>>>> origin/master
+
 Route::get('/containsLocation', function () {
     return view('containsLocation');
 });
@@ -115,9 +114,14 @@ Route::get('/httprequest', function () {
 
 Route::get('/socket', function () {
     return view('socket');
-<<<<<<< HEAD
-=======
+});
 
+Route::get('/getPoly', function () {
+    return view('getPoly');
+});
+
+Route::get('/makePoly', function () {
+    return view('makePoly');
 });
 
 Route::get('/searchPlace', function () {
@@ -132,7 +136,7 @@ Route::get('listTest', function () {
     $listTest = DB::table('building')->get();
 
     return view('listTest', ['listTest' => $listTest]);
->>>>>>> origin/master
+
 });
 
 // Route::get('/myMap', function () {

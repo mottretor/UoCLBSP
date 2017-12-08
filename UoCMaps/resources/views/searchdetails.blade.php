@@ -40,7 +40,7 @@
 
         var uoc = new google.maps.Polygon({paths: uoccoords});
 
-        //map.data.add({geometry: new google.maps.Data.Polygon([uoccoords])});
+        map.data.add({geometry: new google.maps.Data.Polygon([uoccoords])});
 
         var source = new google.maps.LatLng (6.897899, 79.860451);
         var destination = new google.maps.LatLng (6.901209, 79.860429);
@@ -142,7 +142,7 @@
 
     //google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC564I5ucBK7bdyzJvVzTeG_AuPlubn3kY&libraries=geometry"></script>
+    
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC564I5ucBK7bdyzJvVzTeG_AuPlubn3kY&libraries=geometry&callback=initMap"
          async defer></script>
   </body>
