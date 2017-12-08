@@ -81,14 +81,19 @@ Route::get('/test', function () {
     return view('test');
 });
 
-<<<<<<< HEAD
+// HEAD
 Route::get('/test2', function () {
     return view('test2');
 });
 
 Route::get('/test3', function () {
     return view('test3');
-=======
+});
+
+Route::get('/test4', function () {
+    return view('test4');
+});
+
 Route::get('/containsLocation', function () {
     return view('containsLocation');
 });
@@ -99,7 +104,6 @@ Route::get('/httprequest', function () {
 
 Route::get('/socket', function () {
     return view('socket');
->>>>>>> origin/master
 });
 
 // Route::get('/myMap', function () {
@@ -109,16 +113,20 @@ Route::get('/socket', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+ 
 // Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
 // database*******************************************************************
 
-Route::get('test4', function () {
+// Route::get('test4', function () {
 
-    $source = DB::table('building')->get();
+//     $source = DB::table('building')->get();
 
-    return view('buildingdata', ['source' => $source]);
-});
+//     return view('buildingdata', ['source' => $source]);
+// });
+
+// Route::get('/viewx', 'test4Controller@index');
+
+Route::post('/formlogic', 'test4Controller@submit');
