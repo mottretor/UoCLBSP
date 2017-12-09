@@ -63,18 +63,22 @@
         //INFO windows for start and end
         markerA.addListener('click', function() {
           infowindowA.open(map, markerA);
-          infowindowB.close();
         });
         var infowindowA = new google.maps.InfoWindow({
           content: "Origin Location"
         });
         markerB.addListener('click', function() {
           infowindowB.open(map, markerB);
-          infowindowA.close();
         });
         var infowindowB = new google.maps.InfoWindow({
           content: "Destination Location"
         });
+        map.addListener('click', function() {
+          infowindowA.close();
+          infowindowB.close();
+        });
+
+
         var finalPath = new google.maps.Polyline({
           path: newLine,
           geodesic: true,
