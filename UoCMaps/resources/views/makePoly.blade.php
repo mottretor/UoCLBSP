@@ -33,12 +33,12 @@
 
         //received polygon data json***************
 
-        var dataPoly = '{"polygons":[{"id":1,"vertexes":[{"latitude": 6.903045, "longitude": 79.860281},{"latitude": 6.902116, "longitude": 79.861996},{"latitude": 6.899326, "longitude": 79.860805},{"latitude": 6.898815, "longitude": 79.860429}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3},{"edge4":4}]},{"id":2,"vertexes":[{"latitude": 6.899528, "longitude": 79.859785},{"latitude": 6.903181, "longitude": 79.858584},{"latitude": 6.902351, "longitude": 79.857511}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3}]},{"id":3,"vertexes":[{"latitude": 6.901509, "longitude": 79.856942},{"latitude": 6.901019, "longitude": 79.855193},{"latitude": 6.900242, "longitude": 79.855440}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3}]}]}';
+        var dataPoly = '{"polygons":[{"id":100,"vertexes":[{"latitude": 6.903045, "longitude": 79.860281},{"latitude": 6.902116, "longitude": 79.861996},{"latitude": 6.899326, "longitude": 79.860805},{"latitude": 6.898815, "longitude": 79.860429}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3},{"edge4":4}]},{"id":200,"vertexes":[{"latitude": 6.899528, "longitude": 79.859785},{"latitude": 6.903181, "longitude": 79.858584},{"latitude": 6.902351, "longitude": 79.857511}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3}]},{"id":647,"vertexes":[{"latitude": 6.901509, "longitude": 79.856942},{"latitude": 6.901019, "longitude": 79.855193},{"latitude": 6.900242, "longitude": 79.855440}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3}]}]}';
         
         var polyJson = JSON.parse(dataPoly);
         //alert(dataPoly);
         
-        var polygons = [],tempPoly = [],lat,lng;
+        var polygons = [],tempPoly = [],lat,lng,ids = [];
 
         for(var i=0;i<polyJson.polygons.length ; i++){
         	for(var j=0;j<polyJson.polygons[i].vertexes.length ; j++){
@@ -47,6 +47,7 @@
 				tempPoly.push({'lat':lat,'lng':lng});
         	}
         	polygons[i] = new google.maps.Polygon({paths: tempPoly});
+          ids[i] = polyJson.polygons[i]["id"];
         	map.data.add({geometry: new google.maps.Data.Polygon([tempPoly])});
         	tempPoly = [];
         	
@@ -54,10 +55,10 @@
         
         //NEED TO BE TAKEN BY INPUT
 
-        var source = new google.maps.LatLng (6.902202, 79.858562); //inside polygon 2
-        //var destination = new google.maps.LatLng (6.900881, 79.855816); //inside polygon 3
-        //var destination = new google.maps.LatLng (6.900689, 79.860633); //inside polygon 1
-        var destination = new google.maps.LatLng (6.897675, 79.862457); //outside all
+        var source = new google.maps.LatLng (6.902202, 79.858562); //inside polygon 200
+        //var destination = new google.maps.LatLng (6.900881, 79.855816); //inside polygon 647
+        //var destination = new google.maps.LatLng (6.900689, 79.860633); //inside polygon 100
+        var destination = new google.maps.LatLng (6.897675, 79.862457); //outside all 0
 
         var srcdst =  {'source':
                          {'latitude':'', 
@@ -78,13 +79,14 @@
         
         for(var z=0;z<polygons.length ; z++){
         	if(google.maps.geometry.poly.containsLocation(source, polygons[z])){
-        		srcdst.source['inside'] = z+1;
+        		srcdst.source['inside'] = ids[z];
         	}
         	if(google.maps.geometry.poly.containsLocation(destination, polygons[z])){
-        		srcdst.destination['inside'] = z+1;
+        		srcdst.destination['inside'] = ids[z];
         	}
         }
         var json = JSON.stringify(srcdst);
+        alert(json);
 
     }
 

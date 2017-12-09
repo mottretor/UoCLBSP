@@ -167,3 +167,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/viewx', 'test4Controller@index');
 
 Route::post('/formlogic', 'test4Controller@submit');
+
+
+
+
+
+
+
+
+
+
+
+
