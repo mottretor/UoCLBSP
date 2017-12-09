@@ -118,6 +118,15 @@ Route::get('/socket', function () {
 
 });
 
+Route::get('/polyOk', function () {
+    return view('polyOk');
+
+});
+
+Route::get('/getAll', function () {
+    return view('getAll');
+});
+
 Route::get('/getPoly', function () {
     return view('getPoly');
 });

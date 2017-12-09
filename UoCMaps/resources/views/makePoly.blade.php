@@ -33,7 +33,7 @@
 
         //received polygon data json***************
 
-        var dataPoly = '{"polygons":[{"id":100,"vertexes":[{"latitude": 6.903045, "longitude": 79.860281},{"latitude": 6.902116, "longitude": 79.861996},{"latitude": 6.899326, "longitude": 79.860805},{"latitude": 6.898815, "longitude": 79.860429}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3},{"edge4":4}]},{"id":200,"vertexes":[{"latitude": 6.899528, "longitude": 79.859785},{"latitude": 6.903181, "longitude": 79.858584},{"latitude": 6.902351, "longitude": 79.857511}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3}]},{"id":647,"vertexes":[{"latitude": 6.901509, "longitude": 79.856942},{"latitude": 6.901019, "longitude": 79.855193},{"latitude": 6.900242, "longitude": 79.855440}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3}]}]}';
+        var dataPoly = '{"polygons":[{"id":100,"vertexes":[{"lat": 6.903045, "lng": 79.860281},{"lat": 6.902116, "lng": 79.861996},{"lat": 6.899326, "lng": 79.860805},{"lat": 6.898815, "lng": 79.860429}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3},{"edge4":4}]},{"id":200,"vertexes":[{"lat": 6.899528, "lng": 79.859785},{"lat": 6.903181, "lng": 79.858584},{"lat": 6.902351, "lng": 79.857511}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3}]},{"id":647,"vertexes":[{"lat": 6.901509, "lng": 79.856942},{"lat": 6.901019, "lng": 79.855193},{"lat": 6.900242, "lng": 79.855440}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3}]}]}';
         
         var polyJson = JSON.parse(dataPoly);
         //alert(dataPoly);
@@ -42,9 +42,9 @@
 
         for(var i=0;i<polyJson.polygons.length ; i++){
         	for(var j=0;j<polyJson.polygons[i].vertexes.length ; j++){
-        		lat = polyJson.polygons[i].vertexes[j]["latitude"];
-        		lng = polyJson.polygons[i].vertexes[j]["longitude"];
-				tempPoly.push({'lat':lat,'lng':lng});
+        		lat = polyJson.polygons[i].vertexes[j]["lat"];
+        		lng = polyJson.polygons[i].vertexes[j]["lng"];
+				    tempPoly.push({'lat':lat,'lng':lng});
         	}
         	polygons[i] = new google.maps.Polygon({paths: tempPoly});
           ids[i] = polyJson.polygons[i]["id"];
@@ -55,26 +55,26 @@
         
         //NEED TO BE TAKEN BY INPUT
 
-        var source = new google.maps.LatLng (6.902202, 79.858562); //inside polygon 200
+        var source = new google.maps.LatLng (7.902202, 79.858562); //inside polygon 200
         //var destination = new google.maps.LatLng (6.900881, 79.855816); //inside polygon 647
         //var destination = new google.maps.LatLng (6.900689, 79.860633); //inside polygon 100
         var destination = new google.maps.LatLng (6.897675, 79.862457); //outside all 0
 
         var srcdst =  {'source':
-                         {'latitude':'', 
-                          'longitude':'', 
+                         {'latitudes':'', 
+                          'longitudes':'', 
                           'inside':0}
                         , 
                       'destination': 
-                         {'latitude':'', 
-                          'longitude':'', 
+                         {'latitudes':'', 
+                          'longitudes':'', 
                           'inside':0}
                         
                       };
-        srcdst.source['latitude'] = source.lat();
-        srcdst.source['longitude'] = source.lng();
-        srcdst.destination['latitude'] = destination.lat();
-        srcdst.destination['longitude'] = destination.lng();
+        srcdst.source['lat'] = source.lat();
+        srcdst.source['lng'] = source.lng();
+        srcdst.destination['lat'] = destination.lat();
+        srcdst.destination['lng'] = destination.lng();
 
         
         for(var z=0;z<polygons.length ; z++){

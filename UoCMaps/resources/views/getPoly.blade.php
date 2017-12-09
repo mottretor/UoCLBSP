@@ -24,7 +24,6 @@
       // This example requires the Geometry library. Include the libraries=geometry
       // parameter when you first load the API. For example:
        
-
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 6.901120, lng: 79.860532},
@@ -43,7 +42,6 @@
 	  	requestPoly.open(method, urlPoly, shouldBeAsync);
 	  	requestPoly.send(polyData);
 	  }   
-
     //google.maps.event.addDomListener(window, 'load', initialize);
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC564I5ucBK7bdyzJvVzTeG_AuPlubn3kY&libraries=geometry&callback=initMap"

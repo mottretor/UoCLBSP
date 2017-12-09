@@ -47,13 +47,13 @@
         
 
         var srcdst =  {'source':
-                        [ {'latitude':''}, 
-                          {'longitude':''}, 
+                        [ {'latitudes':''}, 
+                          {'longitudes':''}, 
                           {'inside':''}
                         ], 
                       'destination': 
-                        [ {'latitude':''}, 
-                          {'longitude':''}, 
+                        [ {'latitudes':''}, 
+                          {'longitudes':''}, 
                           {'inside':''}
                         ]
                       };
