@@ -134,12 +134,7 @@
         });*/
       window.alert(detailsJSon);
       }
-      
-
   
-
-        
-
     //google.maps.event.addDomListener(window, 'load', initialize);
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC564I5ucBK7bdyzJvVzTeG_AuPlubn3kY&libraries=geometry"></script>

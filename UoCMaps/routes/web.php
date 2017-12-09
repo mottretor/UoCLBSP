@@ -15,12 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 Route::get('/home', function () {
     return view('home');
 });
-
 
 Route::get('/getCoords', function () {
     return view('getCoords');
@@ -29,7 +26,6 @@ Route::get('/getCoords', function () {
 Route::get('/searchbuilding', function () {
     return view('searchbuilding');
 });
-
 
 Route::get('/showpoints', function () {
     return view('admin.showpoints');
@@ -56,12 +52,20 @@ Route::get('/addpolygon', function () {
     return view('admin.addpolygon');
 });
 
+Route::get('/addpoint', function () {
+    return view('admin.addpoint');
+});
+
 Route::get('/admin', function () {
     return view('admin');
 });
 
 Route::get('/adminalter', function () {
     return view('adminalter');
+});
+
+Route::get('/geofencing', function () {
+    return view('admin.geofencing');
 });
 
 // Route::get('/adminmappaths', function () {
@@ -95,6 +99,10 @@ Route::get('/test3', function () {
 
 Route::get('/test4', function () {
     return view('test4');
+});
+
+Route::get('/test5', function () {
+    return view('test5');
 });
 
 Route::get('/containsLocation', function () {
