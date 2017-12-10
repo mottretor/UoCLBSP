@@ -182,6 +182,23 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/formlogic', 'test4Controller@submit');
 
 
+//people
+
+Route::get('/addpeople', function () {
+    return view('people.addpeople');
+});
+
+Route::get("/peopleShow",'peopleController@show');
+
+Route::post("people",'PeopleController@store');
+
+Route::post("/peoplesearch",'peopleController@search');
+
+
+
+Route::post("/update",'peopleController@delete');
+
+
 
 
 
