@@ -71,10 +71,10 @@
                           'inside':0}
                         
                       };
-        srcdst.source['lat'] = source.lat();
-        srcdst.source['lng'] = source.lng();
-        srcdst.destination['lat'] = destination.lat();
-        srcdst.destination['lng'] = destination.lng();
+        srcdst.source['latitudes'] = source.lat();
+        srcdst.source['longitudes'] = source.lng();
+        srcdst.destination['latitudes'] = destination.lat();
+        srcdst.destination['longitudes'] = destination.lng();
 
         
         for(var z=0;z<polygons.length ; z++){

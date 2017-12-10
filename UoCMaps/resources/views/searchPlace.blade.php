@@ -103,7 +103,7 @@
         this.destinationPlaceId = null;
         this.travelMode = 'DRIVING';
         var originInput = document.getElementById('origin-input');
-        var destinationInput = document.getElementById('destination-input');8
+        var destinationInput = document.getElementById('destination-input');
 
         var modeSelector = document.getElementById('mode-selector');
         this.directionsService = new google.maps.DirectionsService;

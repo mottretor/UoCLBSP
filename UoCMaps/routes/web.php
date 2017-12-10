@@ -113,6 +113,10 @@ Route::get('/httprequest', function () {
     return view('httprequest');
 });
 
+Route::get('/searchMap', function () {
+    return view('searchMap');
+});
+
 Route::get('/socket', function () {
     return view('socket');
 
