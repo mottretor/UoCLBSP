@@ -44,6 +44,7 @@
             var markerA = new google.maps.Marker({
             position: {lat: lat, lng: lng},
             map: map,
+            animation: google.maps.Animation.DROP,
             label:"A"
             });
           }
@@ -51,11 +52,32 @@
             var markerB = new google.maps.Marker({
             position: {lat: lat, lng: lng},
             map: map,
+            animation: google.maps.Animation.DROP,
             label:"B"
             });
           }
           newLine.push({'lat':lat, 'lng':lng});
         }
+
+
+        //INFO windows for start and end
+        markerA.addListener('click', function() {
+          infowindowA.open(map, markerA);
+        });
+        var infowindowA = new google.maps.InfoWindow({
+          content: "Origin Location"
+        });
+        markerB.addListener('click', function() {
+          infowindowB.open(map, markerB);
+        });
+        var infowindowB = new google.maps.InfoWindow({
+          content: "Destination Location"
+        });
+        map.addListener('click', function() {
+          infowindowA.close();
+          infowindowB.close();
+        });
+
 
         var finalPath = new google.maps.Polyline({
           path: newLine,

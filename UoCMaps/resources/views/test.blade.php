@@ -64,19 +64,20 @@ function initialize() {
     });
     poly.setMap(map);
      
-     
     map.fitBounds(bounds);
 
     // ************************************************************
 
-    var poly = new google.maps.Polygon({path:fairview});   //initialize polygon
-        if (google.maps.geometry.poly.containsLocation(myLatlng, poly)) {
-          window.alert('in');
-            // console.log("Location Found in Polygon!!!!! " + myLatlng.lat() + " " + myLatlng.lng());
-        } else {
-          window.alert('out');
-            // console.log(":( " + myLatlng.lat() + " " + myLatlng.lng());
-        }
+    
+
+    // var poly = new google.maps.Polygon({path:fairview});   //initialize polygon
+    //     if (google.maps.geometry.poly.containsLocation(myLatlng, poly)) {
+    //       window.alert('in');
+    //         // console.log("Location Found in Polygon!!!!! " + myLatlng.lat() + " " + myLatlng.lng());
+    //     } else {
+    //       window.alert('out');
+    //         // console.log(":( " + myLatlng.lat() + " " + myLatlng.lng());
+    //     }
 
     // google.maps.event.addListener(map, 'click', function(event) {
 

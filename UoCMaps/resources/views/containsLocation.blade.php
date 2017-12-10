@@ -31,6 +31,10 @@
           zoom: 17,
         });
 
+        //Get polygons
+
+        
+
         var uoccoords = [
           {lat: 6.903045, lng: 79.860281},
           {lat: 6.902566, lng: 79.862322},

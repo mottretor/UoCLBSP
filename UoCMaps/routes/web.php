@@ -68,6 +68,10 @@ Route::get('/geofencing', function () {
     return view('admin.geofencing');
 });
 
+Route::get('/admintest', function () {
+    return view('admin.admintest');
+});
+
 // Route::get('/adminmappaths', function () {
 //     return view('adminmappaths');
 // });
@@ -89,6 +93,11 @@ Route::get('/test', function () {
     return view('test');
 });
 
+
+
+
+
+
 Route::get('/test2', function () {
     return view('test2');
 });
@@ -96,6 +105,7 @@ Route::get('/test2', function () {
 Route::get('/test3', function () {
     return view('test3');
 });
+
 
 Route::get('/test4', function () {
     return view('test4');
@@ -115,6 +125,25 @@ Route::get('/httprequest', function () {
 
 Route::get('/socket', function () {
     return view('socket');
+
+});
+
+Route::get('/polyOk', function () {
+    return view('polyOk');
+
+});
+
+Route::get('/getAll', function () {
+    return view('getAll');
+});
+
+Route::get('/getPoly', function () {
+    return view('getPoly');
+});
+
+Route::get('/makePoly', function () {
+    return view('makePoly');
+
 });
 
 Route::get('/searchPlace', function () {
@@ -130,6 +159,7 @@ Route::get('listTest', function () {
     $listTest = DB::table('building')->get();
 
     return view('listTest', ['listTest' => $listTest]);
+
 });
 
 // Route::get('/myMap', function () {
@@ -156,3 +186,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/viewx', 'test4Controller@index');
 
 Route::post('/formlogic', 'test4Controller@submit');
+
+
+
+
+
+
+
+
+
+
+
+

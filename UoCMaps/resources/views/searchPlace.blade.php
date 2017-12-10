@@ -66,7 +66,7 @@
     body{
       background-color: black;
     }
-  </style>>
+  </style>
   <body>
     <input id="origin-input" class="controls" type="text"
         placeholder="Origin location...">
@@ -173,7 +173,7 @@
             window.alert('Directions request failed due to ' + status);
           }
         });
-        alert(this.originPlaceId);
+        //alert(this.originPlaceId);
       };
 
     </script>
