@@ -48,7 +48,7 @@ Route::get('/showpolygon', function () {
 });
 
 Route::get('/addbuilding', function () {
-    return view('addbuilding');
+    return view('buildings.addbuilding');
 
 });
 
@@ -240,20 +240,22 @@ Route::group(['prefix' => 'users'], function() {
 
 
 
-Route::get('/addbuilding', function () {
-    return view('buildings.addbuilding');
+Route::get('/addTobuilding', function () {
+    return view('manage');
 });
 
 Route::post("student",'BuildingController@store');
 
-Route::get("/buildingShow",'buildingController@show');
+//Route::get("/buildingShow",'buildingController@show');
 
 Route::post("/buildingSearch",'buildingController@search');
 
 Route::post("/update",'buildingController@update');
 
 
-
+Route::get('/buildingShow', function () {
+    return view('manage');
+});
 
 
 
