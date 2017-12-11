@@ -22,3 +22,4 @@
 </div> -->
 @endsection
 @include('searchMap')
+

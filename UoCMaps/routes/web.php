@@ -148,6 +148,10 @@ Route::get('/searchPlace', function () {
     return view('searchPlace');
 });
 
+Route::get('/geofencing', function () {
+    return view('geofencing');
+});
+
 Route::get('autocomplete-search',array('as'=>'autocomplete.search','uses'=>'AutoCompleteController@index'));
 Route::get('autocomplete-ajax',array('as'=>'autocomplete.ajax','uses'=>'AutoCompleteController@ajaxData'));
 
@@ -233,6 +237,21 @@ Route::group(['prefix' => 'users'], function() {
   Route::get('show/{id}', 'PostController@show');
   Route::delete('delete/{id}', 'PostController@destroy');
 });
+
+
+
+Route::get('/addbuilding', function () {
+    return view('buildings.addbuilding');
+});
+
+Route::post("student",'BuildingController@store');
+
+Route::get("/buildingShow",'buildingController@show');
+
+Route::post("/buildingSearch",'buildingController@search');
+
+Route::post("/update",'buildingController@update');
+
 
 
 

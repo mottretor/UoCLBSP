@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace UoCMaps;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -28,14 +28,14 @@ class User extends Authenticatable
     ];
 
     public function is_admin(){
-      if($this->admin){
+      if($this->admin==1){
         return true;
       }
       return false;
     }
 
     public function is_approve(){
-      if($this->approve){
+      if($this->approve==1){
         return true;
       }
       return false;

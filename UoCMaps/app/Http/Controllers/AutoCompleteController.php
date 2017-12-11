@@ -1,7 +1,7 @@
 <?php
-namespace App\Http\Controllers;
+namespace UoCMaps\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Post;
+use UoCMaps\Post;
 class AutoCompleteController extends Controller
 {
     public function index()
