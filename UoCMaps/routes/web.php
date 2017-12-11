@@ -117,6 +117,10 @@ Route::get('/searchMap', function () {
     return view('searchMap');
 });
 
+Route::get('/searchMapReg', function () {
+    return view('searchMapReg');
+});
+
 Route::get('/socket', function () {
     return view('socket');
 
