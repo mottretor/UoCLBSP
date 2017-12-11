@@ -198,6 +198,39 @@ Route::post("/peoplesearch",'peopleController@search');
 
 Route::post("/update",'peopleController@delete');
 
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/login/custom',[
+  'uses' => 'LoginController@login',
+  'as' => 'login.custom'
+]);
+
+Route::group(['middleware' => 'auth'], function(){
+
+  Route::get('/home', function(){
+    return view('home');
+  })->name('home');
+
+  Route::get('/approvedashboard', function(){
+    return view('approvedashboard');
+  })->name('approvedashboard');
+
+  Route::get('/dashboard', function(){
+    return view('dashboard');
+  })->name('dashboard');
+}
+);
+
+
+Route::group(['prefix' => 'users'], function() {
+  Route::get('/', 'PostController@index');
+  Route::match(['get', 'post'], 'create', 'PostController@create');
+  Route::match(['get', 'put'], 'update/{id}', 'PostController@update');
+  Route::get('show/{id}', 'PostController@show');
+  Route::delete('delete/{id}', 'PostController@destroy');
+});
+
+
 
 
 
