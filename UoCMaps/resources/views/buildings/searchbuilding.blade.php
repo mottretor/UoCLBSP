@@ -64,7 +64,9 @@
                 </table>
 
                 <input type="submit" name="update" value="UPDATE">
-                <input type="reset" name="delete" value="DELETE">
+                <!-- <a type="button" href="/delete/{{$user->id}}">Delete</a> -->
+                <button type="button" class="btn btn-default"> <a href="/delete/{{$user->id}}">Delete</a></button>
+                <!-- <input type="submit" name="delete" value="DELETE"> -->
 
             
             </form>

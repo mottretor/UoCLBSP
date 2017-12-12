@@ -256,6 +256,8 @@ Route::post("/buildingSearch",'buildingController@search');
 
 Route::post("/update",'buildingController@update');
 
+Route::get("/delete/{id}",'buildingController@delete');
+
 
 Route::get('/buildingShow', function () {
     return view('manage');

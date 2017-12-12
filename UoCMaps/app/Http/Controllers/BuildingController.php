@@ -97,7 +97,14 @@ class BuildingController extends Controller
             ->update(['name'=>$request->name,'description'=>$request->description,'long' => $request->Longitudes,'lat'=>$request->Latitudes]);
          // $building->save();
         
-        return 'Building Updateded Successfully';
+        // return 'Building Updateded Successfully';
+            echo "<script>alert('Successful!')</script>";
+            return view ( 'manage');
 
+    }
+
+    function delete($id){
+        DB::table('buildings')->where('id', '=', $id)->delete();
+        return view('manage');
     }
 }
