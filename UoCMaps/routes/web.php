@@ -69,7 +69,7 @@ Route::get('/geofencing', function () {
 });
 
 Route::get('/admintest', function () {
-    return view('admin.admintest');
+    return view('admintest');
 });
 
 // Route::get('/adminmappaths', function () {
