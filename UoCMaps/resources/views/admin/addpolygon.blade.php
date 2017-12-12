@@ -60,6 +60,7 @@
         // and it will automatically appear.
         // pathvertices = path.getArray();
         path.push(event.latLng);
+        // alert(path);
 
             pathvertices = [];
             jsonArray = [];
