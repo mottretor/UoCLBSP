@@ -206,9 +206,9 @@ Route::post("people",'PeopleController@store');
 
 Route::post("/peoplesearch",'peopleController@search');
 
+Route::get("/deletepeople/{nic}",'peopleController@delete');
 
-
-Route::post("/update",'peopleController@delete');
+Route::post("/updatepeople",'peopleController@update');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

@@ -99,15 +99,15 @@ class PeopleController extends Controller
             ->update(['nic'=>$request->nic,'name'=>$request->name,'designation'=>$request->designation,'description'=>$request->description,'long' => $request->Longitudes,'lat'=>$request->Latitudes]);
          // $building->save();
         
-        return 'Building Updateded Successfully';
-
+        echo "<script>alert('Successful!')</script>";
+        return view ('managepeople');
     }
 
 
-    public function delete(Request $request)
-    {
-        DB::table('people')->where('nic', $request->nic)->delete();
-        return 'Building Deleted Successfully';
+    function delete($nic){
+        DB::table('people')->where('nic', '=', $nic)->delete();
+        echo "<script>alert('Delete Successful!')</script>";
+        return view('managepeople');
     }
 
 }

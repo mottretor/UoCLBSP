@@ -24,8 +24,8 @@
     @if(isset($details))
         <p>Search results <b> {{ $query }} </b> are</p>
     
-    {!! Form::open(['url' => '/update','method' => 'post']) !!}
-            <form action="/update" method="post">
+    {!! Form::open(['url' => '/updatepeople','method' => 'post']) !!}
+            <form action="/updatepeople" method="post">
             
                 <table>
 
@@ -107,7 +107,7 @@
                 </table>
 
                 <input type="submit" name="update" value="UPDATE">
-                <input type="submit" name="delete" value="DELETE">
+                <button type="button" class="btn btn-default"> <a href="/deletepeople/{{$user->nic}}">Delete</a></button>
 
             
             </form>

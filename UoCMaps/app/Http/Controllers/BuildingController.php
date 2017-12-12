@@ -105,6 +105,7 @@ class BuildingController extends Controller
 
     function delete($id){
         DB::table('buildings')->where('id', '=', $id)->delete();
+        echo "<script>alert('Delete Successful!')</script>";
         return view('manage');
     }
 }
