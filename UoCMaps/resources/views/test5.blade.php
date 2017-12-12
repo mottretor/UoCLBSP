@@ -43,6 +43,8 @@
         var polydraw, path, graph, point, newpoint;
         var line = [];
         var flag = 0;
+        var source = [];
+        var destination = [];
         // var verticelatlng = [];
         // var verticepos = [];
 
@@ -122,20 +124,24 @@
                 }
 
                 function pointone(ev){
+                    // newpoint.removeListener('click', pointtwo);
                     var point1 = ev.latLng;
                     line.push({'lat': point1.lat(), 'lng': point1.lng()});
+                    source.push({'lat': point1.lat(), 'lng': point1.lng()});
+                    // alert(JSON.stringify(source));
 
                     // if(polydraw.addListener = true || sourcemark.addListener = true || de)
                     polydraw.addListener('click', pointtwo);
                     newpoint.addListener('click', pointtwo);
-                    sourcemark.addListener('click', pointtwo);
-                    destmark.addListener('click', pointtwo);
+                    // sourcemark.addListener('click', pointtwo);
+                    // destmark.addListener('click', pointtwo);
                 }
 
                 function pointtwo(e){
                     var point2 = e.latLng;
                     line.push({'lat': point2.lat(), 'lng': point2.lng()});
-                    // alert(pos);
+                    destination.push({'lat': point2.lat(), 'lng': point2.lng()});
+                    alert(JSON.stringify(destination));
                     newpoint = new google.maps.Marker({
                         position: point2,
                         map: map,
@@ -154,9 +160,9 @@
                     
 
                     polydraw.addListener('click', pointone);
-                    sourcemark.addListener('click', pointone);
-                    destmark.addListener('click', pointone);
-
+                    // sourcemark.addListener('click', pointone);
+                    // destmark.addListener('click', pointone);
+                    destination = [];
                     line = [];
                     
 
