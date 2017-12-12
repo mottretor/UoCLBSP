@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace UoCMaps\Http\Controllers\Auth;
 
-use App\User;
-use App\Http\Controllers\Controller;
+use UoCMaps\User;
+use UoCMaps\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -50,7 +50,9 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'nic' => 'required|string|size:10|unique:users',
+            'job_title' => 'required|string|max:20',
+            'password' => 'required|string|min:5|confirmed',
         ]);
     }
 
@@ -58,13 +60,15 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \UoCMaps\User
      */
     protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'nic' => $data['nic'],
+            'job_title' => $data['job_title'],
             'password' => bcrypt($data['password']),
         ]);
     }

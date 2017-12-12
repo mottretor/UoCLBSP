@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Register As New User</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
@@ -34,6 +34,34 @@
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('nic') ? ' has-error' : '' }}">
+                            <label for="nic" class="col-md-4 control-label">Nic Number</label>
+
+                            <div class="col-md-6">
+                                <input id="nic" type="text" class="form-control" name="nic" value="{{ old('nic') }}" required>
+
+                                @if ($errors->has('nic'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('nic') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('job_title') ? ' has-error' : '' }}">
+                            <label for="job_title" class="col-md-4 control-label">University Job Title (Title or No)</label>
+
+                            <div class="col-md-6">
+                                <input id="job_title" type="text" class="form-control" name="job_title" value="{{ old('job_title') }}" required>
+
+                                @if ($errors->has('job_title'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('job_title') }}</strong>
                                     </span>
                                 @endif
                             </div>

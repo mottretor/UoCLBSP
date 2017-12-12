@@ -44,7 +44,7 @@ Route::get('/showpolygon', function () {
 });
 
 Route::get('/addbuilding', function () {
-    return view('addbuilding');
+    return view('buildings.addbuilding');
 
 });
 
@@ -123,6 +123,14 @@ Route::get('/httprequest', function () {
     return view('httprequest');
 });
 
+Route::get('/searchMap', function () {
+    return view('searchMap');
+});
+
+Route::get('/searchMapReg', function () {
+    return view('searchMapReg');
+});
+
 Route::get('/socket', function () {
     return view('socket');
 
@@ -137,6 +145,10 @@ Route::get('/getAll', function () {
     return view('getAll');
 });
 
+Route::get('/adminTest', function () {
+    return view('adminTest');
+});
+
 Route::get('/getPoly', function () {
     return view('getPoly');
 });
@@ -148,6 +160,10 @@ Route::get('/makePoly', function () {
 
 Route::get('/searchPlace', function () {
     return view('searchPlace');
+});
+
+Route::get('/geofencing', function () {
+    return view('geofencing');
 });
 
 Route::get('autocomplete-search',array('as'=>'autocomplete.search','uses'=>'AutoCompleteController@index'));
@@ -187,6 +203,75 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/formlogic', 'test4Controller@submit');
 
+
+//people
+
+Route::get('/addpeople', function () {
+    return view('people.addpeople');
+});
+
+Route::get("/peopleShow",'peopleController@show');
+
+Route::post("people",'PeopleController@store');
+
+Route::post("/peoplesearch",'peopleController@search');
+
+Route::get("/deletepeople/{nic}",'peopleController@delete');
+
+Route::post("/updatepeople",'peopleController@update');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/login/custom',[
+  'uses' => 'LoginController@login',
+  'as' => 'login.custom'
+]);
+
+Route::group(['middleware' => 'auth'], function(){
+
+  Route::get('/home', function(){
+    return view('home');
+  })->name('home');
+
+  Route::get('/approvedashboard', function(){
+    return view('approvedashboard');
+  })->name('approvedashboard');
+
+  Route::get('/dashboard', function(){
+    return view('dashboard');
+  })->name('dashboard');
+}
+);
+
+
+Route::group(['prefix' => 'users'], function() {
+  Route::get('/', 'PostController@index');
+  Route::match(['get', 'post'], 'create', 'PostController@create');
+  Route::match(['get', 'put'], 'update/{id}', 'PostController@update');
+  Route::get('show/{id}', 'PostController@show');
+  Route::delete('delete/{id}', 'PostController@destroy');
+});
+
+
+
+Route::get('/addTobuilding', function () {
+    return view('manage');
+});
+
+Route::post("student",'BuildingController@store');
+
+//Route::get("/buildingShow",'buildingController@show');
+
+Route::post("/buildingSearch",'buildingController@search');
+
+Route::post("/update",'buildingController@update');
+
+Route::get("/delete/{id}",'buildingController@delete');
+
+
+Route::get('/buildingShow', function () {
+    return view('manage');
+});
 
 
 

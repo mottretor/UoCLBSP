@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace UoCMaps\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;

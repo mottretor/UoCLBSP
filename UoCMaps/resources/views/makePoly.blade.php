@@ -33,10 +33,12 @@
 
         //received polygon data json***************
 
-        var dataPoly = '{"polygons":[{"id":100,"vertexes":[{"lat": 6.903045, "lng": 79.860281},{"lat": 6.902116, "lng": 79.861996},{"lat": 6.899326, "lng": 79.860805},{"lat": 6.898815, "lng": 79.860429}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3},{"edge4":4}]},{"id":200,"vertexes":[{"lat": 6.899528, "lng": 79.859785},{"lat": 6.903181, "lng": 79.858584},{"lat": 6.902351, "lng": 79.857511}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3}]},{"id":647,"vertexes":[{"lat": 6.901509, "lng": 79.856942},{"lat": 6.901019, "lng": 79.855193},{"lat": 6.900242, "lng": 79.855440}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3}]}]}';
+        //var dataPoly = '{"polygons":[{"id":100,"vertexes":[{"lat": 6.903045, "lng": 79.860281},{"lat": 6.902116, "lng": 79.861996},{"lat": 6.899326, "lng": 79.860805},{"lat": 6.898815, "lng": 79.860429}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3},{"edge4":4}]},{"id":200,"vertexes":[{"lat": 6.899528, "lng": 79.859785},{"lat": 6.903181, "lng": 79.858584},{"lat": 6.902351, "lng": 79.857511}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3}]},{"id":647,"vertexes":[{"lat": 6.901509, "lng": 79.856942},{"lat": 6.901019, "lng": 79.855193},{"lat": 6.900242, "lng": 79.855440}],"edges":[{"edge1":1},{"edge2":2},{"edge3":3}]}]}';
+
+        var dataPoly = '{"polygons":[{"vertexes":[],"id":1},{"vertexes":[],"id":2},{"vertexes":[],"id":3},{"vertexes":[{"lng":6.90356,"lat":6.90356},{"lng":6.904646,"lat":6.904646},{"lng":6.903815,"lat":6.903815},{"lng":6.901003,"lat":6.901003},{"lng":6.901717,"lat":6.901717}],"id":4},{"vertexes":[{"lng":6.90356,"lat":6.90356},{"lng":6.904646,"lat":6.904646},{"lng":6.903815,"lat":6.903815},{"lng":6.901003,"lat":6.901003},{"lng":6.901717,"lat":6.901717}],"id":5},{"vertexes":[{"lng":6.90356,"lat":6.90356},{"lng":6.904646,"lat":6.904646},{"lng":6.903815,"lat":6.903815},{"lng":6.901003,"lat":6.901003},{"lng":6.901717,"lat":6.901717}],"id":6},{"vertexes":[{"lng":6.90356,"lat":6.90356},{"lng":6.904646,"lat":6.904646},{"lng":6.903815,"lat":6.903815},{"lng":6.901003,"lat":6.901003},{"lng":6.901717,"lat":6.901717}],"id":7},{"vertexes":[{"lng":6.90356,"lat":6.90356},{"lng":6.904646,"lat":6.904646},{"lng":6.903815,"lat":6.903815},{"lng":6.901003,"lat":6.901003},{"lng":6.901717,"lat":6.901717}],"id":8},{"vertexes":[{"lng":6.90356,"lat":6.90356},{"lng":6.904646,"lat":6.904646},{"lng":6.903815,"lat":6.903815},{"lng":6.901003,"lat":6.901003},{"lng":6.901717,"lat":6.901717}],"id":9},{"vertexes":[],"id":10},{"vertexes":[],"id":11},{"vertexes":[{"lng":6.901557,"lat":6.901557},{"lng":6.90046,"lat":6.90046},{"lng":6.90176,"lat":6.90176}],"id":12},{"vertexes":[{"lng":6.904476,"lat":6.904476},{"lng":6.902921,"lat":6.902921},{"lng":6.90226,"lat":6.90226}],"id":13},{"vertexes":[{"lng":6.90341,"lat":6.90341},{"lng":6.902473,"lat":6.902473},{"lng":6.903144,"lat":6.903144}],"id":14},{"vertexes":[{"lng":6.901823,"lat":6.901823},{"lng":6.901515,"lat":6.901515},{"lng":6.900098,"lat":6.900098}],"id":15}]}';
         
         var polyJson = JSON.parse(dataPoly);
-        //alert(dataPoly);
+        //alert(JSON.stringify(polyJson.polygons[0].vertexes));
         
         var polygons = [],tempPoly = [],lat,lng,ids = [];
 
@@ -44,11 +46,13 @@
         	for(var j=0;j<polyJson.polygons[i].vertexes.length ; j++){
         		lat = polyJson.polygons[i].vertexes[j]["lat"];
         		lng = polyJson.polygons[i].vertexes[j]["lng"];
-				    tempPoly.push({'lat':lat,'lng':lng});
+				    tempPoly.push({lat:lat,lng:lng});
         	}
         	polygons[i] = new google.maps.Polygon({paths: tempPoly});
           ids[i] = polyJson.polygons[i]["id"];
         	map.data.add({geometry: new google.maps.Data.Polygon([tempPoly])});
+          //polygons[i].setMap(map);
+          //alert(JSON.stringify(tempPoly));
         	tempPoly = [];
         	
         }
@@ -71,10 +75,10 @@
                           'inside':0}
                         
                       };
-        srcdst.source['lat'] = source.lat();
-        srcdst.source['lng'] = source.lng();
-        srcdst.destination['lat'] = destination.lat();
-        srcdst.destination['lng'] = destination.lng();
+        srcdst.source['latitudes'] = source.lat();
+        srcdst.source['longitudes'] = source.lng();
+        srcdst.destination['latitudes'] = destination.lat();
+        srcdst.destination['longitudes'] = destination.lng();
 
         
         for(var z=0;z<polygons.length ; z++){
