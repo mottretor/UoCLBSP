@@ -135,6 +135,10 @@ Route::get('/getAll', function () {
     return view('getAll');
 });
 
+Route::get('/adminTest', function () {
+    return view('adminTest');
+});
+
 Route::get('/getPoly', function () {
     return view('getPoly');
 });
