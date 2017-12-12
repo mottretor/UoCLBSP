@@ -96,7 +96,7 @@
                             Latitude :
                         </td>
                         <td>
-                            <input type="text" name="Latitudes" id="infoLat" value="{{$user->lat}}">
+                            <input type="text" name="Latitudes" id="infoLat" value="{{$user->latitude}}">
                             
                         </td>
                     </tr>
@@ -106,7 +106,7 @@
                             Longitude :
                         </td>
                         <td>
-                            <input type="text" name="Longitudes" id="infoLng" value="{{$user->long}}">
+                            <input type="text" name="Longitudes" id="infoLng" value="{{$user->longitude}}">
                             
                         </td>
                     </tr>
@@ -162,14 +162,14 @@
           center: uluru
         });
 
-        // var marker;
-        // for(var i=0;i<coordsObj.length;i++){
-        //   marker = new google.maps.Marker({
-        //     position: new google.maps.LatLng(coordsObj[i]['lat'],coordsObj[i]['lng']),
-        //     map: map
-        //   });
-        //   marker.setMap(map);
-        // }
+        var marker;
+        for(var i=0;i<coordsObj.length;i++){
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(coordsObj[i]['lat'],coordsObj[i]['lng']),
+            map: map
+          });
+          marker.setMap(map);
+        }
         
         
       }

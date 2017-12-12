@@ -16,8 +16,8 @@ class CreateManagepeopleTable extends Migration
             $table->string('name');
             $table->string('designation');
             $table->string('description');
-            $table->double('long',16,3)->nullable();
-            $table->double('lat',16,3)->nullable();
+            $table->double('longatude',16,3)->nullable();
+            $table->double('latitude',16,3)->nullable();
             $table->timestamps();
         });
     }

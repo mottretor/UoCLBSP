@@ -22,12 +22,14 @@ class PeopleController extends Controller
     	$people->name = $request->name;
     	$people->designation = $request->designation;
     	$people->description = $request->description;
-    	$people->long = $request->Longitudes;
-    	$people->lat = $request->Latitudes;
+    	$people->longitude = $request->Longitudes;
+    	$people->latitude = $request->Latitudes;
 
-    	$people->save();
-        echo "<script>alert('Successful!')</script>";
-    	return view('people.addpeople');
+    	if($people->save())
+            echo "<script>alert('Successful!')</script>";
+    	else
+        echo "<script>alert('ID Allready Added!')</script>";
+        return view('managepeople');
 
     }
 
@@ -36,7 +38,7 @@ class PeopleController extends Controller
     	$people = DB::table('people')->get();
         $coords = array();
         foreach ($people as $peopl) {
-            array_push($coords, array("lat"=>$peopl->lat,"lng"=>$peopl->long));
+            array_push($coords, array("lat"=>$peopl->latitude,"lng"=>$peopl->longitude));
             # code...
         }
         //$coordsJson = json_encode($coords);
@@ -55,11 +57,21 @@ class PeopleController extends Controller
        $name = $req->input('q');
        //$q = Input::get ( 'q' );
 
-       $user = DB::table('people')->where ( 'name', 'LIKE', '%' . $name . '%' )->get ();
+       $user = DB::table('people')->where ( 'nic', 'LIKE', '%' . $name . '%' )->get ();
+       $coords = array();
+        foreach ($user as $peopl) {
+            array_push($coords, array("lat"=>$peopl->latitude,"lng"=>$peopl->longitude));
+            # code...
+        }
+        //$coordsJson = json_encode($coords);
+
+        //$a=$buildings[2]->name;
+
+        $coordsObj = (object) $coords;
 
        //$id=SELECT DISTINCT (id) FROM[buildings] WHERE name=$user;
        //dd($user);
-        //$coords = array();
+        
         // foreach($user as $use){
         //     ($coords, array("lat"=>$use->lat,"lng"=>$use->long));
         //     # code...
@@ -69,10 +81,10 @@ class PeopleController extends Controller
 
        
     if (count ( $user ) > 0)
-        return view ( 'people.searchpeople' )->withDetails ( $user )->withQuery ( $name );
+        return view ( 'people.searchpeople',compact('coords') )->withDetails ( $user )->withQuery ( $name );
     else
-        return view ( 'people.searchpeople' )->withMessage ( 'No Details found. Try to search again !' );
-
+        echo "<script>alert('No Result Found!')</script>";
+        return view('managepeople');
     }
 
     public function update(Request $request)
@@ -96,7 +108,7 @@ class PeopleController extends Controller
         //dd($request->id);
         DB::table('people')
             ->where('nic', $request->nic)
-            ->update(['nic'=>$request->nic,'name'=>$request->name,'designation'=>$request->designation,'description'=>$request->description,'long' => $request->Longitudes,'lat'=>$request->Latitudes]);
+            ->update(['nic'=>$request->nic,'name'=>$request->name,'designation'=>$request->designation,'description'=>$request->description,'longitude' => $request->Longitudes,'latitude'=>$request->Latitudes]);
          // $building->save();
         
         echo "<script>alert('Successful!')</script>";

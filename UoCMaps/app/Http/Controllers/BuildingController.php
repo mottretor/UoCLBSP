@@ -69,8 +69,8 @@ class BuildingController extends Controller
     if (count ( $user ) > 0)
         return view ( 'buildings.searchbuilding' )->withDetails ( $user )->withQuery ( $name );
     else
-        return view ( 'buildings.searchbuilding' )->withMessage ( 'No Details found. Try to search again !' );
-
+        echo "<script>alert('No Result Found!')</script>";
+        return view('manage');
     }
 
     public function update(Request $request)
