@@ -38,6 +38,7 @@
             var polyid = 0;
             var startingPoint;
             var outJSON = {};
+            var polyindex = [];
 
 
             function initMap() {
@@ -46,57 +47,63 @@
                     zoom: 17
                 });
 
+                map.addListener('dblclick', sendData);
+
                 // mapdata = '{"graphs":[{"vertexes":[{"lng":79.859614,"id":10,"lat":6.903579},{"lng":79.859726,"id":11,"lat":6.90225},{"lng":79.85948,"id":12,"lat":6.902409}],"edges":[{"destination":10,"id":9,"source":12},{"destination":12,"id":11,"source":11}],"id":16}],"polygons":[{"vertexes":[{"lng":79.858825,"lat":6.90357},{"lng":79.86155,"lat":6.903602},{"lng":79.860821,"lat":6.901334},{"lng":79.859147,"lat":6.902622}],"id":16}]}';
 
                 var urlPoly = "http://ec2-52-72-156-17.compute-1.amazonaws.com:1978";
                 var method = "POST";
-                var mapData = JSON.stringify({"type":"mapRequest"});
+                var mapData = JSON.stringify({"type": "mapRequest"});
                 var shouldBeAsync = true;
                 var requestMap = new XMLHttpRequest();
-                var data;     
+                var data;
                 requestMap.onload = function () {
                     var status = requestMap.status; // HTTP response status, e.g., 200 for "200 OK"
                     data = requestMap.response;
-                    // alert(data);
+                    alert(data);
+                    maparray = JSON.parse(data);
+
+                    // //alert(dataPoly);
+                    polyArray = maparray.polygons;
+                    graphArray = maparray.graphs;
+                    loadmap();
+                    line = [];
+                    temp = [];
+                    flag = 0;
+                    source = [];
+                    cestination = [];
+                    // var verticelatlng = [];
+                    // var verticepos = [];
+
+                    for (var i = 0; i < polyArray.length; i++) {
+                        path = [];
+                        // graph = [];
+                        var polyObject = polyArray[i].vertexes;
+
+                        // alert(JSON.stringify(polyObject));
+                        var polydraw = new google.maps.Polygon({
+                            paths: polyObject,
+                            strokeColor: '#aeb20c',
+                            strokeOpacity: 0.8,
+                            strokeWeight: 3,
+                            fillColor: '#eaf01b',
+                            fillOpacity: 0.35,
+                            id: polyArray[i].id
+                        });
+                        polydraw.setMap(map);
+                        polydraw.addListener('click', pointtwo);
+                        outJSON[polyArray[i].id] = [];
+                        polyindex.push(polyArray[i].id);
+                        // newpoint.addListener('click', pointone);
+
+                    }
+//                    alert(data);
                 }
                 requestMap.open(method, urlPoly, shouldBeAsync);
-                requestMap.send(maparray);
-                alert(data);
-                maparray = JSON.parse(data);
-                // //alert(dataPoly);
-                polyArray = maparray.polygons;
-                graphArray = maparray.graphs;
-                loadmap();
-                line = [];
-                temp = [];
-                flag = 0;
-                source = [];
-                cestination = [];
-                // var verticelatlng = [];
-                // var verticepos = [];
+                requestMap.send(mapData);
 
-                for (var i = 0; i < polyArray.length; i++) {
-                    path = [];
-                    // graph = [];
-                    var polyObject = polyArray[i].vertexes;
 
-                    // alert(JSON.stringify(polyObject));
-                    var polydraw = new google.maps.Polygon({
-                        paths: polyObject,
-                        strokeColor: '#aeb20c',
-                        strokeOpacity: 0.8,
-                        strokeWeight: 3,
-                        fillColor: '#eaf01b',
-                        fillOpacity: 0.35,
-                        id: polyArray[i].id
-                    });
-                    polydraw.setMap(map);
-                    polydraw.addListener('click', pointtwo);
-                    outJSON[polyArray[i].id] = [];
-                    // newpoint.addListener('click', pointone);
 
-                }
-            
 
             }
             function loadmap() {
@@ -144,7 +151,7 @@
                     outPath['source'] = startingPoint;
                     outPath['destination'] = endPoint;
                     outJSON[this.id].push(outPath);
-                    
+
 
                     var sourcemark = new google.maps.Marker({
                         position: endPoint,
@@ -152,9 +159,9 @@
                         id: this.id
                     });
                     sourcemark.addListener('click', pointone);
-                    
+
                     var path = new google.maps.Polyline({
-                        path: [startingPoint,endPoint],
+                        path: [startingPoint, endPoint],
                         // geodesic: true,
                         strokeColor: 'blue',
                         strokeOpacity: 1.0,
@@ -181,7 +188,7 @@
                     outPath['source'] = startingPoint;
                     outPath['destination'] = endPoint;
                     outJSON[this.id].push(outPath);
-                    
+
 
                     var sourcemark = new google.maps.Marker({
                         position: endPoint,
@@ -191,7 +198,7 @@
                     sourcemark.addListener('click', pointone);
 
                     var path = new google.maps.Polyline({
-                        path: [startingPoint,endPoint],
+                        path: [startingPoint, endPoint],
                         // geodesic: true,
                         strokeColor: 'blue',
                         strokeOpacity: 1.0,
@@ -203,6 +210,20 @@
 
             }
 
+            function sendData(ev) {
+                var resultJson = [];
+                for (var i = 0; i < polyindex.length; i++) {
+                    if (outJSON[polyindex[i]].length>0) {
+                        var getElement = {};
+                        getElement['id'] = polyindex[i];
+                        getElement['paths'] = outJSON[polyindex[i]];
+                        resultJson.push(getElement);
+                    }
+                }
+                var finalJson = {};
+                finalJson['Changes'] = resultJson;
+                alert(JSON.stringify(finalJson));
+            }
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC564I5ucBK7bdyzJvVzTeG_AuPlubn3kY&libraries=geometry&callback=initMap"
         async defer></script>
