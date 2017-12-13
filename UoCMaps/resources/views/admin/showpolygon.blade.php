@@ -50,24 +50,6 @@
           fillOpacity: 0.35
         });
         uoc.setMap(map);
-
-        // Add a listener for the click event.
-        // bermudaTriangle.addListener('click', showArrays);
-
-        // infoWindow = new google.maps.InfoWindow;
-
-        // uoc.addListener('click', function (event) {
-        //   //alert the index of the polygon
-        //   alert('Um inside the polygon! :)');
-
-        //   // Add a new marker to mark the path**********
-        //   var marker = new google.maps.Marker({
-        //       position: event.latLng,
-        //       title: '#' + path.getLength(),
-        //       map: map
-        //   }); //end marker
-
-        // });
       }
 
     </script>

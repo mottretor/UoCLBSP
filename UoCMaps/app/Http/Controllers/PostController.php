@@ -29,7 +29,7 @@ class PostController extends Controller
           }
 
           else {
-            return redirect()->route('home');
+            return redirect()->route('newuser');
           }
 
     }
@@ -45,14 +45,14 @@ class PostController extends Controller
 
               $request->session()->put('field', $request
                       ->has('field') ? $request->get('field') : ($request->session()
-                      ->has('field') ? $request->session()->get('field') : 'approve'));
+                      ->has('field') ? $request->session()->get('field') : 'email'));
 
                       $request->session()->put('sort', $request
                               ->has('sort') ? $request->get('sort') : ($request->session()
                               ->has('sort') ? $request->session()->get('sort') : 'asc'));
 
       $users = new Post();
-            $users = $users->where('approve', 'like', '%' . $request->session()->get('search') . '%')
+            $users = $users->where('email', 'like', '%' . $request->session()->get('search') . '%')
                 ->orderBy($request->session()->get('field'), $request->session()->get('sort'))
                 ->paginate(5);
             if ($request->ajax()) {

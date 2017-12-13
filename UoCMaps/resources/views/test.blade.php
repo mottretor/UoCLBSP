@@ -32,11 +32,12 @@ var PathData = [
 function initialize() {
     var map = new google.maps.Map(document.getElementById('map-canvas'));
     // var infowindow = new google.maps.InfoWindow();
-    var center = new google.maps.LatLng(MarkerData[0], MarkerData[1]);
+
+    var markerlatlng = new google.maps.LatLng(latLng.lat(), latLng.lng());
     var marker = new google.maps.Marker({
-        position: center,
+        position: markerlatlng,
         map: map,
-        title: MarkerData[2]
+        // title: MarkerData[2]
     });
  
     // google.maps.event.addListener(marker, 'click', function() {
@@ -63,8 +64,49 @@ function initialize() {
     });
     poly.setMap(map);
      
-     
     map.fitBounds(bounds);
+
+    // ************************************************************
+
+    
+
+    // var poly = new google.maps.Polygon({path:fairview});   //initialize polygon
+    //     if (google.maps.geometry.poly.containsLocation(myLatlng, poly)) {
+    //       window.alert('in');
+    //         // console.log("Location Found in Polygon!!!!! " + myLatlng.lat() + " " + myLatlng.lng());
+    //     } else {
+    //       window.alert('out');
+    //         // console.log(":( " + myLatlng.lat() + " " + myLatlng.lng());
+    //     }
+
+    // google.maps.event.addListener(map, 'click', function(event) {
+
+
+          
+    //       var resultColor =
+    //           google.maps.geometry.poly.containsLocation(e.latLng, uoc) ?
+    //           'blue' :
+    //           'red';
+
+    //       var resultPath =
+    //           google.maps.geometry.poly.containsLocation(e.latLng, uoc) ?
+    //           // A triangle.
+    //           "m 0 -1 l 1 2 -2 0 z" :
+    //           google.maps.SymbolPath.CIRCLE;
+
+    //       new google.maps.Marker({
+    //         position: e.latLng,
+    //         map: map,
+    //         icon: {
+    //           path: resultPath,
+    //           fillColor: resultColor,
+    //           fillOpacity: .2,
+    //           strokeColor: 'white',
+    //           strokeWeight: .5,
+    //           scale: 10
+    //         }
+    //       });
+    //       uoccoords.setMap(map);
 }
  
 //google.maps.event.addDomListener(window, 'load', initialize);

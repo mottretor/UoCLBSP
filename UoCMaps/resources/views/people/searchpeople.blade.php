@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Get Shortest Path</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf"/>
+    <title>MANAGING BUILDINGS AND PEOPLE</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="jquery.js"></script>
+    <script src="css/boostrap.js"></script>
+    <link herf="css/boostrap.css" rel="stylesheet"/>
 </head>
+
 <body>
-<div>
-	<div class="container">
+<div style="width: 100%; height: 10%; float: top; background-color: black">
+    <p style="color: white; font-size: 30px"> UoC Location Based Services Platform</p>
+</div>
+<div style="width: 100%; height: 90%; float: bottom">
+    <div style="width: 25%; float: left">
+       
+         <div class="container">
+  <br>
+  <div  style=" width: 300px">
+    
+   </div>
+   <br />
+   <div id="result"></div>
+  </div>
+  <div> 
+
+    <div class="container">
     @if(isset($details))
         <p>Search results <b> {{ $query }} </b> are</p>
     
-    {!! Form::open(['url' => '/update','method' => 'post']) !!}
-            <form action="/update" method="post">
+    {!! Form::open(['url' => '/updatepeople','method' => 'post']) !!}
+            <form action="/updatepeople" method="post">
             
                 <table>
 
@@ -52,11 +59,11 @@
                         <td>
                             <!-- {!!Form::text('name',null,['class'=>'form-control']);!!} -->
                             <!-- @foreach($details as $user) -->
-				            
-				                <!-- <td>{{$user->name}}</td> -->
-				                
-				            
-				            <!-- @endforeach -->
+                            
+                                <!-- <td>{{$user->name}}</td> -->
+                                
+                            
+                            <!-- @endforeach -->
                             <input type="hidden" name="nic" value=" {{$user->nic}}">
                             <input type="text" name="name" id="name" value="{{$user->name}}">
                         </td>
@@ -89,7 +96,7 @@
                             Latitude :
                         </td>
                         <td>
-                            <input type="text" name="Latitudes" id="infoLat" value="{{$user->lat}}">
+                            <input type="text" name="Latitudes" id="infoLat" value="{{$user->latitude}}">
                             
                         </td>
                     </tr>
@@ -99,34 +106,93 @@
                             Longitude :
                         </td>
                         <td>
-                            <input type="text" name="Longitudes" id="infoLng" value="{{$user->long}}">
+                            <input type="text" name="Longitudes" id="infoLng" value="{{$user->longitude}}">
                             
                         </td>
                     </tr>
 
                 </table>
 
-                <input type="submit" name="update" value="UPDATE">
-                <input type="submit" name="delete" value="DELETE">
-
+                <input type="submit" name="update" value="UPDATE" class="btn btn-default">
+                <button type="button" class="btn btn-default"> <a href="/deletepeople/{{$user->nic}}">Delete</a></button>
+                <button type="button" class="btn btn-default"> <a href="/peopleShow">Back</a></button>
             
             </form>
             {!! Form::close() !!}
     @endif
 
- 	</div>
-    <div id="map"></div>
-    <script>
-    function initMap() {
-      var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 6.901120, lng: 79.860532},
-        zoom: 15,
-      });
-    }
-    </script>
-
- 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC564I5ucBK7bdyzJvVzTeG_AuPlubn3kY&libraries=geometry&callback=initMap"
-         async defer></script>
 </div>
+        
+   </div>
+</div>
+    <div style="width: 75%; float:right">
+        <div>
+            
+
+  <head>
+    <style>
+       #map {
+        height: 700px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+  
+    <div>
+    
+
+    </div>
+    
+
+
+ 
+
+
+
+    <div id="map"></div>
+    
+    <script>
+    
+
+      function initMap() {
+        var uluru = {lat: 6.902215976621638, lng: 79.86069999999995};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 19,
+          center: uluru
+        });
+
+        var marker;
+        for(var i=0;i<coordsObj.length;i++){
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(coordsObj[i]['lat'],coordsObj[i]['lng']),
+            map: map
+          });
+          marker.setMap(map);
+        }
+        
+        
+      }
+      </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAf_UNZ4XLYq1wPHkvOVF6zkrvVOzG3eE&callback=initMap"
+    async defer></script>
+    
+
+
+        </div>
+    </div>
+</div>
+
+    
+
+
+
+
+
+ 
+
 </body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </html>

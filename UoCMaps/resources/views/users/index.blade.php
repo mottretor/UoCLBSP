@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <div class="container">
 
     <div class="row">
@@ -27,7 +29,7 @@
                 <input class="form-control" id="search"
                        value="{{ request()->session()->get('search') }}"
                        onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('users')}}?search='+this.value)"
-                       placeholder="Search Approve" name="search"
+                       placeholder="Search Email" name="search"
                        type="text" id="search"/>
                        
                 <div class="input-group-btn">
@@ -59,7 +61,7 @@
                 {{request()->session()->get('field')=='email'?(request()->session()->get('sort')=='asc'?'&#9652;':'&#9662;'):''}}
             </th>
 
-            <th><a href="javascript:ajaxLoad('{{url('posts?field=nic&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Nic</a>
+            <th><a href="javascript:ajaxLoad('{{url('users?field=nic&sort='.(request()->session()->get('sort')=='asc'?'desc':'asc'))}}')">Nic</a>
                 {{request()->session()->get('field')=='nic'?(request()->session()->get('sort')=='asc'?'&#9652;':'&#9662;'):''}}
             </th>
 
@@ -143,5 +145,5 @@
             {{ $users->links() }}
         </ul>
 </div>
-
+@endsection
 

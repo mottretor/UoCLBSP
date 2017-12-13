@@ -23,7 +23,7 @@
     <form action="/peoplesearch" method="POST" role="search">
     {{ csrf_field() }}
     <div class="input-group">
-        <input type="text" class="form-control" name="q"placeholder="Search users"> 
+        <input type="text" class="form-control" name="q"placeholder="Search People"> 
             <span class="input-group-btn">
               <button type="submit" class="btn btn-default">
                   <span class="glyphicon glyphicon-search"></span>
@@ -91,11 +91,10 @@
 
       function initMap() {
 
-        var coords = {lat: 6.902215976621638, lng: 79.86069999999995};
-        var coordsObj = {!! json_encode($coords) !!};
+        
         var uluru = {lat: 6.902215976621638, lng: 79.86069999999995};
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 16,
+          zoom: 19,
           center: uluru
         });
 

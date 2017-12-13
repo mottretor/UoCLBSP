@@ -15,6 +15,7 @@
     <title>Sample directions</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+  </head>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -56,17 +57,10 @@
       #destination-input:focus {
         border-color: #4d90fe;
       }
-
-     
-      
-
-    </style>
-  </head>
-  <style >
-    body{
+      body{
       background-color: black;
-    }
-  </style>
+      }
+    </style>
   <body>
     <input id="origin-input" class="controls" type="text"
         placeholder="Origin location...">

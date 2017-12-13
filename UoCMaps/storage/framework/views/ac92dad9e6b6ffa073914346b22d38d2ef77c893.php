@@ -27,7 +27,8 @@
     
   </div>
   <button type="button" class="btn btn-default"> <a href="users">Manage Users</a></button>
-  You are logged in!
+  <button type="button" class="btn btn-default"> <a href="approvedashboard">Map</a></button>
+  
                 </div>
             </div>
         </div>

@@ -16,11 +16,73 @@
         body{
       background-color: black;
     }
-    </style>
+    
+
+</style>
+    
+      
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style >
+      #map {
+          height: 83%;
+          z-index: initial;
+        }
+      body{
+        background-color: black;
+      }
+      html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+      .controls {
+          margin-top: 10px;
+          border: 4px solid transparent;
+          border-radius: 2px 0 0 2px;
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          height: 32px;
+          outline: none;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+      #origin-input,
+        #destination-input{
+          background-color: #fff;
+          font-family: Roboto;
+          font-size: 15px;
+          font-weight: 300;
+          margin-left: 12px;
+          margin-top: 10px;
+          padding: 0 11px 0 13px;
+          text-overflow: ellipsis;
+          width: 200px;
+          height: 30px;
+        }
+        #search-button {
+          
+          font-family: Roboto;
+          font-size: 17px;
+          font-weight: 500;
+          margin-left: 12px;
+          margin-top: 10px;
+          padding: 0 11px 0 13px;
+          text-overflow: ellipsis;
+          width: 200px;
+          height: 30px;
+        }
+
+        #origin-input:focus,
+        #destination-input:focus{
+          border-color: #4d90fe;
+        }
+  </style>
+
+    
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" >
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -40,7 +102,7 @@
                     </a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <div id="navibar" class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
@@ -53,14 +115,29 @@
                             <li><a href="<?php echo e(route('login')); ?>">Login</a></li>
                             <li><a href="<?php echo e(route('register')); ?>">Register</a></li>
                         <?php else: ?>
-                            <li class="dropdown">
+                        <li>
+                            <li><a>
+                                    <?php echo e(Auth::user()->name); ?> 
+                                </a></li>
+                            <li><a  href="<?php echo e(route('logout')); ?>" 
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a></li>
+
+                                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                                            <?php echo e(csrf_field()); ?>
+
+                                        </form>
+                        </li>
+                            <!-- <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     <?php echo e(Auth::user()->name); ?> <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="<?php echo e(route('logout')); ?>"
+                                        <a class="dropdown-itemß" href="<?php echo e(route('logout')); ?>" 
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
@@ -72,15 +149,16 @@
                                         </form>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> -->
                         <?php endif; ?>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <?php echo $__env->yieldContent('content'); ?>
+        
     </div>
+    <?php echo $__env->yieldContent('content'); ?>
 
     <!-- Scripts -->
     <script src="<?php echo e(asset('js/app.js')); ?>"></script>

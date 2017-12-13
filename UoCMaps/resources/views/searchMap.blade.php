@@ -1,13 +1,14 @@
-<!DOCTYPE html>
+
+
 <html>
 
-<h1 class="heading">UoC Location Based Services Platform</h1>
+<h2 class="heading">UoC Location Based Services Platform</h2>
 <style type="text/css">
   .heading { 
     color : #fff;
-    font-family: Arial;
-    margin-left: 10em;
-    margin-top: 1em;
+    font-family: sans-serif;
+    
+    text-align: center;
     
 
    }
@@ -18,45 +19,66 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/typeahead.bundle.js"></script>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      
+    </head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style >
       #map {
-        height: 80%;
+          height: 83%;
+          z-index: initial;
+        }
+      body{
+        background-color: black;
       }
-      
-      
-      /* Optional: Makes the sample page fill the window. */
       html, body {
-        height: 100%;
-        margin: 10;
-        padding: 10;
-      }
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
       .controls {
-        margin-top: 10px;
-        border: 1px solid transparent;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        height: 32px;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      }
+          margin-top: 10px;
+          border: 4px solid transparent;
+          border-radius: 2px 0 0 2px;
+          box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          height: 32px;
+          outline: none;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+      #origin-input,
+        #destination-input{
+          background-color: #fff;
+          font-family: Roboto;
+          font-size: 15px;
+          font-weight: 300;
+          margin-left: 12px;
+          margin-top: 10px;
+          padding: 0 11px 0 13px;
+          text-overflow: ellipsis;
+          width: 200px;
+          height: 30px;
+        }
+        #search-button {
+          
+          font-family: Roboto;
+          font-size: 17px;
+          font-weight: 500;
+          margin-left: 12px;
+          margin-top: 10px;
+          padding: 0 11px 0 13px;
+          text-overflow: ellipsis;
+          width: 200px;
+          height: 30px;
+        }
 
-      
-
-     
-      
-
-     
-      
-
-    </style>
-  </head>
-  <style >
-    body{
-      background-color: black;
-    }
+        #origin-input:focus,
+        #destination-input:focus{
+          border-color: #4d90fe;
+        }
   </style>
   
   
@@ -73,15 +95,15 @@
 
     <input id="destination-input" class="controls" type="text"
         placeholder="Destination location..."> -->
-    <div>
-      <input list="places"  id="origin-input" />
+    
+      <input list="places"  id="origin-input" placeholder="Origin.." />
       <datalist id="places"></datalist>
 
-      <input list="placesD" id="destination-input" />
+      <input list="placesD" id="destination-input" placeholder="Destination.." />
       <datalist id="placesD"></datalist>
 
-      <button onclick="getDirections()">Get Directions</button>
-    </div>
+      <button type="button" onclick="getDirections()" id="search-button" class="btn btn-default">Get Directions</button>
+    
       
       
 
@@ -96,19 +118,31 @@
         window.map = new google.maps.Map(document.getElementById('map'), {
             mapTypeControl: true,
             zoom: 16,
-            center: {lat: 6.9022, lng: 79.8607}
+            center: {lat: 6.9022, lng: 79.8607},
+            gestureHandling: 'cooperative'
         });
-        
+        var originInput = document.getElementById('origin-input');
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+
+        var destinationInput = document.getElementById('destination-input');
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
+
+        var searchButton = document.getElementById('search-button');
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(searchButton);
 
         
       }
 
         //ORIGIN****************************************************
+        //search part
         $('#origin-input').keyup(function(){
           var searchValue=$(this).val();
           //alert(searchValue);
 
-          var getPlaces = {"type":"searchRequest","input":searchValue,"role":"registered"};
+
+          //Getting two places from the search bars Origin and Destination
+          //search results are retrieved from the java server
+          var getPlaces = {"type":"searchRequest","input":searchValue,"role":"no"};
 
           var getPlacesJson = JSON.stringify(getPlaces);
           var urlPlaces = "http://ec2-52-72-156-17.compute-1.amazonaws.com:1978";
@@ -119,7 +153,9 @@
           requestPlaces.timeout = 5000;
           requestPlaces.ontimeout = function(e){
             alert('request timeout');
-          }    
+          }  
+
+          //on success  
           requestPlaces.onload = function () {
             var status = requestPlaces.status;
             var data = requestPlaces.response;
@@ -154,6 +190,7 @@
         });
 
         //DESTINATION************************************************
+        //getting search results for the destination
         $('#destination-input').keyup(function(){
           var searchValue=$(this).val();
           //alert(searchValue);
@@ -171,6 +208,7 @@
           requestPlacesD.ontimeout = function(e){
             alert('request timeout');
           }    
+          //on success
           requestPlacesD.onload = function () {
             var status = requestPlacesD.status;
             var data = requestPlacesD.response;
@@ -206,6 +244,8 @@
           requestPlacesD.send(placesData);
         });
 
+
+        //getting directions
         function getDirections(){
           window.source;
           window.destination;
@@ -233,6 +273,8 @@
           //   center: {lat: 6.901120, lng: 79.860532},
           //   zoom: 15,
           // });
+
+          //requesting polygons from the server
           var urlPoly = "http://ec2-52-72-156-17.compute-1.amazonaws.com:1978";
           var method = "POST";
           var polyData = JSON.stringify({"type":"polyRequest"});
@@ -262,10 +304,14 @@
                 }
                 //alert(polyJson.polygons[i].vertexes.length>0);
                 if(polyJson.polygons[i].vertexes.length>0){
+
+                  //make new polygons
                   polygons[i] = new google.maps.Polygon({paths: tempPoly});
                   ids[i] = polyJson.polygons[i]["id"];
                   //if(polygons[i]){
-                    //window.map.data.add({geometry: new google.maps.Data.Polygon([tempPoly])});
+
+                    //draw polygons on the map
+                    window.map.data.add({geometry: new google.maps.Data.Polygon([tempPoly])});
                     tempPoly = [];
                     //polygons[i].setMap(window.map);
                   //}
@@ -308,7 +354,8 @@
               srcdst.destination['longitudes'] = destination.lng();
               //alert(JSON.stringify(srcdst));
 
-                  
+              //check if the search points are inside any of the polygons 
+              //otherwise zero   
               for(var z=0;z<polygons.length ; z++){
                 if(polygons[z]){
                   if(google.maps.geometry.poly.containsLocation(source, polygons[z])){
@@ -323,7 +370,7 @@
               var jsonInside = JSON.stringify(srcdst);
               //alert(json);
 
-
+              //sending the two points' coordinates and inside or not details
               var url = "http://ec2-52-72-156-17.compute-1.amazonaws.com:1978";
               var method = "POST";
               var postData = jsonInside;
@@ -380,12 +427,12 @@
 
 
 
-                  
-                  window.map = new google.maps.Map(document.getElementById('map'), {
-                    mapTypeControl: true,
-                    zoom: 15,
-                    center: {lat: 6.9022, lng: 79.8607}
-                  });
+                  //load new map for each search instance
+                  // window.map = new google.maps.Map(document.getElementById('map'), {
+                  //   mapTypeControl: true,
+                  //   zoom: 15,
+                  //   center: {lat: 6.9022, lng: 79.8607}
+                  // });
                   
                   if(newPath.steps.length>0){
                     var finalPath = new google.maps.Polyline({
@@ -397,9 +444,11 @@
                     });
 
                     
-                    
+                    //drawing the final received path on the map
                     finalPath.setMap(window.map);
 
+
+                    //putting two markers on origin and destination
                     var markerA = new google.maps.Marker({
                         position: {lat: newPath.steps[0]['lat'], lng: newPath.steps[0]['lng']},
                         map: window.map,
@@ -430,7 +479,7 @@
                       infowindowB.close();
                     });
 
-
+                    //adjust the zoom level for the path to be clearly seen
                     var markerBounds = new google.maps.LatLngBounds();
                     
                     markerBounds.extend(markerA.position);

@@ -15,12 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 Route::get('/home', function () {
     return view('home');
 });
-
 
 Route::get('/getCoords', function () {
     return view('getCoords');
@@ -29,7 +26,6 @@ Route::get('/getCoords', function () {
 Route::get('/searchbuilding', function () {
     return view('searchbuilding');
 });
-
 
 Route::get('/showpoints', function () {
     return view('admin.showpoints');
@@ -56,12 +52,24 @@ Route::get('/addpolygon', function () {
     return view('admin.addpolygon');
 });
 
+Route::get('/addpoint', function () {
+    return view('admin.addpoint');
+});
+
 Route::get('/admin', function () {
     return view('admin');
 });
 
 Route::get('/adminalter', function () {
     return view('adminalter');
+});
+
+Route::get('/geofencing', function () {
+    return view('admin.geofencing');
+});
+
+Route::get('/admintest', function () {
+    return view('admintest');
 });
 
 // Route::get('/adminmappaths', function () {
@@ -103,7 +111,9 @@ Route::get('/test4', function () {
     return view('test4');
 });
 
-
+Route::get('/test5', function () {
+    return view('test5');
+});
 
 Route::get('/containsLocation', function () {
     return view('containsLocation');
@@ -175,7 +185,7 @@ Route::get('listTest', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
- 
+
 // Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
@@ -206,9 +216,9 @@ Route::post("people",'PeopleController@store');
 
 Route::post("/peoplesearch",'peopleController@search');
 
+Route::get("/deletepeople/{nic}",'peopleController@delete');
 
-
-Route::post("/update",'peopleController@delete');
+Route::post("/updatepeople",'peopleController@update');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -219,9 +229,9 @@ Route::post('/login/custom',[
 
 Route::group(['middleware' => 'auth'], function(){
 
-  Route::get('/home', function(){
-    return view('home');
-  })->name('home');
+  Route::get('/newuser', function(){
+    return view('newuser');
+  })->name('newuser');
 
   Route::get('/approvedashboard', function(){
     return view('approvedashboard');
@@ -250,24 +260,15 @@ Route::get('/addTobuilding', function () {
 
 Route::post("student",'BuildingController@store');
 
-//Route::get("/buildingShow",'buildingController@show');
+Route::get("/buildingShow",'buildingController@show');
 
 Route::post("/buildingSearch",'buildingController@search');
 
 Route::post("/update",'buildingController@update');
 
+Route::get("/delete/{id}",'buildingController@delete');
+
 
 Route::get('/buildingShow', function () {
     return view('manage');
 });
-
-
-
-
-
-
-
-
-
-
-

@@ -69,8 +69,8 @@ class BuildingController extends Controller
     if (count ( $user ) > 0)
         return view ( 'buildings.searchbuilding' )->withDetails ( $user )->withQuery ( $name );
     else
-        return view ( 'buildings.searchbuilding' )->withMessage ( 'No Details found. Try to search again !' );
-
+        echo "<script>alert('No Result Found!')</script>";
+        return view('manage');
     }
 
     public function update(Request $request)
@@ -97,7 +97,15 @@ class BuildingController extends Controller
             ->update(['name'=>$request->name,'description'=>$request->description,'long' => $request->Longitudes,'lat'=>$request->Latitudes]);
          // $building->save();
         
-        return 'Building Updateded Successfully';
+        // return 'Building Updateded Successfully';
+            echo "<script>alert('Successful!')</script>";
+            return view ( 'manage');
 
+    }
+
+    function delete($id){
+        DB::table('buildings')->where('id', '=', $id)->delete();
+        echo "<script>alert('Delete Successful!')</script>";
+        return view('manage');
     }
 }
