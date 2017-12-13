@@ -125,6 +125,7 @@
                 }
 
                 function pointone(ev){
+                    temp = [];
                     // newpoint.removeListener('click', pointtwo);
                     var point1 = ev.latLng;
                     temp.push('s');
@@ -135,9 +136,45 @@
 
                     // if(polydraw.addListener = true || sourcemark.addListener = true || de)
                     polydraw.addListener('click', pointtwo);
-                    newpoint.addListener('click', pointtwo);
+                    // newpoint.addListener('click', pointtwo);
                     // sourcemark.addListener('click', pointtwo);
                     // destmark.addListener('click', pointtwo);
+
+                    function pointtwo(e){
+
+                        var point2 = e.latLng;
+                        temp.push('d');
+                        line.push({'lat': point2.lat(), 'lng': point2.lng()});
+                        temp.push({'lat': point2.lat(), 'lng': point2.lng()});
+                        // destination.push({'lat': point2.lat(), 'lng': point2.lng()});
+                        alert(JSON.stringify(destination));
+                        newpoint = new google.maps.Marker({
+                            position: point2,
+                            map: map,
+                        });
+                        newpoint.addListener('click', pointone);
+
+                        var path = new google.maps.Polyline({
+                            path: line,
+                            // geodesic: true,
+                            strokeColor: 'blue',
+                            strokeOpacity: 1.0,
+                            strokeWeight: 5
+                        });
+                                    
+                        path.setMap(map);
+                        alert(JSON.stringify(temp));
+                        // alert(pathdraw);
+                        
+
+                        polydraw.addListener('click', pointone);
+                        // sourcemark.addListener('click', pointone);
+                        // destmark.addListener('click', pointone);
+                        destination = [];
+                        line = [];
+                        // temp = [];
+                    }
+
                 }
 
                 function pointtwo(e){
@@ -162,7 +199,8 @@
                     });
                                 
                     path.setMap(map);
-                    alert(temp);
+                    alert(JSON.stringify(temp));
+                    // alert(pathdraw);
                     
 
                     polydraw.addListener('click', pointone);
@@ -171,12 +209,6 @@
                     destination = [];
                     line = [];
                     // temp = [];
-                    
-
-                    
-                    // sourcemark.addListener('click', pathdraw);
-                    // destmark.addListener('click', pathdraw);
-
                 }
 
             }
