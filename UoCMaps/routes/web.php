@@ -185,7 +185,7 @@ Route::get('listTest', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
- 
+
 // Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
@@ -229,9 +229,9 @@ Route::post('/login/custom',[
 
 Route::group(['middleware' => 'auth'], function(){
 
-  Route::get('/home', function(){
-    return view('home');
-  })->name('home');
+  Route::get('/newuser', function(){
+    return view('newuser');
+  })->name('newuser');
 
   Route::get('/approvedashboard', function(){
     return view('approvedashboard');
@@ -272,14 +272,3 @@ Route::get("/delete/{id}",'buildingController@delete');
 Route::get('/buildingShow', function () {
     return view('manage');
 });
-
-
-
-
-
-
-
-
-
-
-
