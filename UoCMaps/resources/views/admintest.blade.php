@@ -46,12 +46,23 @@
                     zoom: 17
                 });
 
-                //received polygon data json***************
-                // var mapdata = '{"graphs":[{"vertexes":[{"lng":79.859614,"id":60,"lat":6.903579},{"lng":79.859726,"id":61,"lat":6.90225},{"lng":79.85948,"id":62,"lat":6.902409}],"edges":[{"destination":10,"id":9,"source":9},{"destination":11,"id":10,"source":9},{"destination":12,"id":11,"source":10},{"destination":12,"id":12,"source":11}],"id":16}],"polygons":[{"vertexes":[{"lng":79.858825,"lat":6.90357},{"lng":79.86155,"lat":6.903602},{"lng":79.860821,"lat":6.901334},{"lng":79.859147,"lat":6.902622}],"id":16}]}';
+                // mapdata = '{"graphs":[{"vertexes":[{"lng":79.859614,"id":10,"lat":6.903579},{"lng":79.859726,"id":11,"lat":6.90225},{"lng":79.85948,"id":12,"lat":6.902409}],"edges":[{"destination":10,"id":9,"source":12},{"destination":12,"id":11,"source":11}],"id":16}],"polygons":[{"vertexes":[{"lng":79.858825,"lat":6.90357},{"lng":79.86155,"lat":6.903602},{"lng":79.860821,"lat":6.901334},{"lng":79.859147,"lat":6.902622}],"id":16}]}';
 
-                mapdata = '{"graphs":[{"vertexes":[{"lng":79.859614,"id":10,"lat":6.903579},{"lng":79.859726,"id":11,"lat":6.90225},{"lng":79.85948,"id":12,"lat":6.902409}],"edges":[{"destination":10,"id":9,"source":12},{"destination":12,"id":11,"source":11}],"id":16}],"polygons":[{"vertexes":[{"lng":79.858825,"lat":6.90357},{"lng":79.86155,"lat":6.903602},{"lng":79.860821,"lat":6.901334},{"lng":79.859147,"lat":6.902622}],"id":16}]}';
-
-                maparray = JSON.parse(mapdata);
+                var urlPoly = "http://ec2-52-72-156-17.compute-1.amazonaws.com:1978";
+                var method = "POST";
+                var mapData = JSON.stringify({"type":"mapRequest"});
+                var shouldBeAsync = true;
+                var requestMap = new XMLHttpRequest();
+                var data;     
+                requestMap.onload = function () {
+                    var status = requestMap.status; // HTTP response status, e.g., 200 for "200 OK"
+                    data = requestMap.response;
+                    // alert(data);
+                }
+                requestMap.open(method, urlPoly, shouldBeAsync);
+                requestMap.send(maparray);
+                alert(data);
+                maparray = JSON.parse(data);
                 // //alert(dataPoly);
                 polyArray = maparray.polygons;
                 graphArray = maparray.graphs;
@@ -84,8 +95,8 @@
                     outJSON[polyArray[i].id] = [];
                     // newpoint.addListener('click', pointone);
 
-
                 }
+            
 
             }
             function loadmap() {
@@ -191,40 +202,6 @@
                 }
 
             }
-
-//            function pointtwo(e) {
-//                var point2 = e.latLng;
-//                temp.push('d');
-//                line.push({'lat': point2.lat(), 'lng': point2.lng()});
-//                temp.push({'lat': point2.lat(), 'lng': point2.lng()});
-//                // destination.push({'lat': point2.lat(), 'lng': point2.lng()});
-//                alert(JSON.stringify(destination));
-//                newpoint = new google.maps.Marker({
-//                    position: point2,
-//                    map: map,
-//                });
-//                newpoint.addListener('click', pointone);
-//
-//                var path = new google.maps.Polyline({
-//                    path: line,
-//                    // geodesic: true,
-//                    strokeColor: 'blue',
-//                    strokeOpacity: 1.0,
-//                    strokeWeight: 5
-//                });
-//
-//                path.setMap(map);
-//                alert(JSON.stringify(temp));
-//                // alert(pathdraw);
-//
-//
-//                polydraw.addListener('click', pointone);
-//                // sourcemark.addListener('click', pointone);
-//                // destmark.addListener('click', pointone);
-//                destination = [];
-//                line = [];
-//                // temp = [];
-//            }
 
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC564I5ucBK7bdyzJvVzTeG_AuPlubn3kY&libraries=geometry&callback=initMap"

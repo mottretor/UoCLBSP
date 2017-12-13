@@ -180,41 +180,6 @@
                 json = JSON.stringify(jsonpath);
 
             }
-
-            // function sendData(){
-            //     alert(json);
-                // var url = "http://ec2-52-72-156-17.compute-1.amazonaws.com:1978";
-                // var method = "POST";
-                // var postData = json;
-
-                // // want shouldBeAsync = true.
-                // // Otherwise, it'll block ALL execution waiting for server response.
-                // var shouldBeAsync = true;
-
-                // var request = new XMLHttpRequest();
-
-                // // request.onreadystatechange = function(){
-                // //  if(request.readyState == XMLHttpRequest.DONE && request.status ==200){
-                // //      alert('request.responseXML');
-                // //  }
-                // // }
-                // request.onload = function () {
-                //     var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
-                //     var data = request.response;
-                //     alert(status); // Returned data, e.g., an HTML document.
-                // }
-
-                // request.open(method, url, shouldBeAsync);
-
-                // //request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-                // //request.setRequestHeader("Authorization");
-                // //request.setRequestHeader("Authorization", null);
-                // // Or... whatever
-
-                // // Actually sends the request to the server.
-                // request.send(postData);
-
-            //}
     
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZXHp9g0R5pEPgs2AlSUQBBBv0xe8vIhY&libraries=places&callback=initMap">
