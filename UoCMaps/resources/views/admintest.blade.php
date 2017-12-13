@@ -56,10 +56,10 @@
                 var mapData = JSON.stringify({"type": "mapRequest"});
                 var shouldBeAsync = true;
                 var requestMap = new XMLHttpRequest();
-                var data;
+
                 requestMap.onload = function () {
                     var status = requestMap.status; // HTTP response status, e.g., 200 for "200 OK"
-                    data = requestMap.response;
+                    var data = requestMap.response;
                     alert(data);
                     maparray = JSON.parse(data);
 
@@ -213,7 +213,7 @@
             function sendData(ev) {
                 var resultJson = [];
                 for (var i = 0; i < polyindex.length; i++) {
-                    if (outJSON[polyindex[i]].length>0) {
+                    if (outJSON[polyindex[i]].length > 0) {
                         var getElement = {};
                         getElement['id'] = polyindex[i];
                         getElement['paths'] = outJSON[polyindex[i]];
@@ -221,8 +221,25 @@
                     }
                 }
                 var finalJson = {};
+                finalJson['type'] = "addPaths";
                 finalJson['Changes'] = resultJson;
                 alert(JSON.stringify(finalJson));
+
+                var urlPoly = "http://ec2-52-72-156-17.compute-1.amazonaws.com:1978";
+                var method = "POST";
+                var mapData = JSON.stringify(finalJson);
+                var shouldBeAsync = true;
+                var requestMap = new XMLHttpRequest();
+                var data;
+                requestMap.onload = function () {
+                    var status = requestMap.status; // HTTP response status, e.g., 200 for "200 OK"
+                    var data = requestMap.response;
+                    alert(data);
+                }
+                requestMap.open(method, urlPoly, shouldBeAsync);
+                requestMap.send(mapData);
+
+
             }
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC564I5ucBK7bdyzJvVzTeG_AuPlubn3kY&libraries=geometry&callback=initMap"
