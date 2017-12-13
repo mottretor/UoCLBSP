@@ -20,8 +20,8 @@ class BuildingController extends Controller
         
     	$building->name = $request->name;
     	$building->description = $request->description;
-    	$building->long = $request->Longitudes;
-    	$building->lat = $request->Latitudes;
+    	$building->longitudes = $request->Longitudes;
+    	$building->latitudes = $request->Latitudes;
 
     	$building->save();
         echo "<script>alert('Successful!')</script>";
@@ -32,10 +32,10 @@ class BuildingController extends Controller
 
     public function show()
     {
-    	$buildings = DB::table('buildings')->get();
+    	$buildings = DB::table('building')->get();
         $coords = array();
         foreach ($buildings as $building) {
-            array_push($coords, array("lat"=>$building->lat,"lng"=>$building->long));
+            array_push($coords, array("latitudes"=>$building->lat,"longitudes"=>$building->long));
             # code...
         }
         //$coordsJson = json_encode($coords);
@@ -54,7 +54,7 @@ class BuildingController extends Controller
        $name = $req->input('q');
        //$q = Input::get ( 'q' );
 
-       $user = DB::table('buildings')->where ( 'name', 'LIKE', '%' . $name . '%' )->get ();
+       $user = DB::table('building')->where ( 'name', 'LIKE', '%' . $name . '%' )->get ();
        //$id=SELECT DISTINCT (id) FROM[buildings] WHERE name=$user;
        //dd($user);
         //$coords = array();
@@ -92,7 +92,7 @@ class BuildingController extends Controller
         // $building->lat = $request->Latitudes;
         //$affected = DB::update('update buildings set name='.$name.', description='.$description.' where name=$user);
         //dd($request->id);
-        DB::table('buildings')
+        DB::table('building')
             ->where('id', $request->id)
             ->update(['name'=>$request->name,'description'=>$request->description,'long' => $request->Longitudes,'lat'=>$request->Latitudes]);
          // $building->save();
@@ -104,7 +104,11 @@ class BuildingController extends Controller
     }
 
     function delete($id){
+<<<<<<< HEAD
         DB::table('buildings')->where('id', '=', $id)->delete();
+=======
+        DB::table('building')->where('id', '=', $id)->delete();
+>>>>>>> origin/master
         echo "<script>alert('Delete Successful!')</script>";
         return view('manage');
     }
