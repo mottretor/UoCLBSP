@@ -12,7 +12,7 @@
         }
         /* Optional: Makes the sample page fill the window. */
         html, body {
-            height: 100%;
+            height: 95%;
             margin: 0;
             padding: 0;
         }
@@ -38,7 +38,7 @@
 
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 17,
+            zoom: 16,
             center: {lat: 6.902215976621638, lng: 79.86069999999995}  // Center the map
         });        
 

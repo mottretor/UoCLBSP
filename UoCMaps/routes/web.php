@@ -260,7 +260,7 @@ Route::get('/addTobuilding', function () {
 
 Route::post("student",'BuildingController@store');
 
-//Route::get("/buildingShow",'buildingController@show');
+Route::get("/buildingShow",'buildingController@show');
 
 Route::post("/buildingSearch",'buildingController@search');
 
