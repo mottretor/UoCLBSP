@@ -29,7 +29,7 @@ class PostController extends Controller
           }
 
           else {
-            return redirect()->route('home');
+            return redirect()->route('newuser');
           }
 
     }
