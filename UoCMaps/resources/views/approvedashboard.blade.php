@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
+
 @include('searchMapReg')
-=======
->>>>>>> origin/master
+
+
 
 <!-- @include('searchMapReg') -->
 <!-- <div class="container">
