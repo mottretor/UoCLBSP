@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('css'); ?>
   <style>
       .loading {

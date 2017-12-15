@@ -150,7 +150,7 @@
           var placesData = getPlacesJson;
           var shouldBeAsync = true;
           var requestPlaces = new XMLHttpRequest(); 
-          requestPlaces.timeout = 5000;
+          requestPlaces.timeout = 15000;
           requestPlaces.ontimeout = function(e){
             alert('request timeout');
           }  
@@ -311,7 +311,7 @@
                   //if(polygons[i]){
 
                     //draw polygons on the map
-                    window.map.data.add({geometry: new google.maps.Data.Polygon([tempPoly])});
+                    //window.map.data.add({geometry: new google.maps.Data.Polygon([tempPoly])});
                     tempPoly = [];
                     //polygons[i].setMap(window.map);
                   //}
@@ -393,8 +393,8 @@
               requestPath.onload = function () {
                 var status = requestPath.status; // HTTP response status, e.g., 200 for "200 OK"
                 var newPathJson = requestPath.response;
-                //alert(status);
-                if(requestPath.readyState === XMLHttpRequest.DONE && requestPath.status === 200){
+                //alert(newPathJson);
+                // if(requestPath.readyState === XMLHttpRequest.DONE && requestPath.status === 200){
                   //alert(newPathJson); // Returned data, e.g., an HTML document.
 
                   // var sampleData = '{"steps":[{"latitude": 6.903045, "longitude": 79.860281},{"latitude": 6.902116, "longitude": 79.861996},{"latitude": 6.899326, "longitude": 79.860805},{"latitude": 6.898815, "longitude": 79.860429},{"latitude": 6.899528, "longitude": 79.859785},{"latitude": 6.903181, "longitude": 79.858584},{"latitude": 6.902351, "longitude": 79.857511},{"latitude": 6.901509, "longitude": 79.856942},{"latitude": 6.901019, "longitude": 79.855193},{"latitude": 6.900242, "longitude": 79.855440}]}';
@@ -494,7 +494,7 @@
                   }
 
                   
-                }
+                //}
 
               }
             //}

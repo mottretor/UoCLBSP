@@ -311,7 +311,7 @@
                   //if(polygons[i]){
 
                     //draw polygons on the map
-                    window.map.data.add({geometry: new google.maps.Data.Polygon([tempPoly])});
+                    //window.map.data.add({geometry: new google.maps.Data.Polygon([tempPoly])});
                     tempPoly = [];
                     //polygons[i].setMap(window.map);
                   //}
