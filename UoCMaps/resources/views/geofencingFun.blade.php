@@ -56,7 +56,7 @@
         //alert(json);
         map.addListener('dblclick',function(){
             alert(json);
-            var url = "http://ec2-52-72-156-17.compute-1.amazonaws.com:1978";
+            var url = "http://localhost:1978";
             var method = "POST";
             var postData = json;
 
