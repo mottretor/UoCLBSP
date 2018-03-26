@@ -7,5 +7,5 @@ University of Colombo Location Based Services Platform
 The Platform consists of **Three Components** :
 
 **1. The Java Socket API Server [[Repository](https://github.com/PasinduPriyashan/UoCLBSP-MapServer)]**
-**2. The PHP Web Server [[Repository](https://github.com/PasinduPriyashan/UoCLBSP-WebServer)]**
-**3. The Android Application [[Repository](https://github.com/PasinduPriyashan/UoCLBSP-Android)]**
+**1. The PHP Web Server [[Repository](https://github.com/PasinduPriyashan/UoCLBSP-WebServer)]**
+**1. The Android Application [[Repository](https://github.com/PasinduPriyashan/UoCLBSP-Android)]**
