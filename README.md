@@ -1,6 +1,4 @@
-# UoCLBSP
-
-University of Colombo Location Based Services Platform
+# University of Colombo Location Based Services Platform
 
 > **University of Colombo Location Based Services Platform supports existence of customized map on top of Google Maps. And it provides various location based services to the users.**
 
